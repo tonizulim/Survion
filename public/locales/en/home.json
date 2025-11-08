@@ -1,0 +1,29 @@
+{
+  "title": "Create Professional Surveys in Minutes",
+  "description": "Build engaging surveys with multiple question types, collect responses, and analyze results all in one powerful platform.",
+  "subtitle": "Everything You Need",
+  "features": [
+    {
+      "title": "Multiple Question Types",
+      "description": "Text, multiple choice, checkboxes, ratings, and drag-and-drop ranking questions."
+    },
+    {
+      "title": "Real-time Analytics",
+      "description": "View and analyze survey responses with detailed statistics and insights."
+    },
+    {
+      "title": "Secure & Private",
+      "description": "Admin approval system and email verification ensure secure access control."
+    },
+    {
+      "title": "Time Limits",
+      "description": "Set optional time limits for surveys to create urgency and improve response rates."
+    }
+  ],
+  "cta":{
+    "title":"Ready to Get Started?",
+    "description":"Join SurveyPro today and start creating professional surveys that get results.",
+    "button":"Create Free Account"
+  },
+  "footer": "© 2025 Survion. All rights reserved."
+}

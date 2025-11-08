@@ -1,0 +1,30 @@
+{
+  "title": "Izradite profesionalne ankete u nekoliko minuta",
+  "description": "Izradite zanimljive ankete s različitim vrstama pitanja, prikupljajte odgovore i analizirajte rezultate sve na jednoj moćnoj platformi.",
+  "subtitle": "Sve što vam treba",
+  "features": [
+    {
+      "title": "Više vrsta pitanja",
+      "description": "Tekst, višestruki izbor, potvrdni okviri, ocjene i pitanja s povlačenjem i rasporedom."
+    },
+    {
+      "title": "Analitika u stvarnom vremenu",
+      "description": "Pregledajte i analizirajte odgovore na ankete uz detaljne statistike i uvide."
+    },
+    {
+      "title": "Sigurno i privatno",
+      "description": "Sustav odobrenja administratora i verifikacija putem e-pošte osiguravaju kontrolu pristupa."
+    },
+    {
+      "title": "Vremenska ograničenja",
+      "description": "Postavite opcionalna vremenska ograničenja za ankete kako biste stvorili osjećaj hitnosti i poboljšali stopu odgovora."
+    }
+  ],
+  "cta": {
+    "title": "Spremni za početak?",
+    "description": "Pridružite se SurveyPro platformi već danas i počnite izrađivati profesionalne ankete koje donose rezultate.",
+    "button": "Izradi besplatan račun"
+  },
+    "footer": "© 2025 Survion. Sva prava pridržana."
+  
+}

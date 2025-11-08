@@ -1,0 +1,21 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "getStarted": "Get Started"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "startCreating": "Start Creating",
+    "logIn": "Log in",
+    "signIn": "Sign in"
+  },
+  "questionTypes": {
+    "TextAnswer": "Text answer",
+    "MultipleChoice": "Multiple choice",
+    "Checkbox": "Checkbox",
+    "Rating": "Rating",
+    "PriorityScale": "Priority scale"
+  }
+}

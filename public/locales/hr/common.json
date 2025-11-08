@@ -1,0 +1,21 @@
+{
+  "navbar": {
+    "home": "Početna",
+    "about": "O nama",
+    "getStarted": "Registriraj se"
+  },
+  "buttons": {
+    "save": "Spremi",
+    "cancel": "Odustani",
+    "startCreating": "Registriraj se",
+    "logIn": "Prijava",
+    "signIn": "Registracija"
+  },
+  "questionTypes": {
+    "TextAnswer": "Tekstualni odgovor",
+    "MultipleChoice": "Višestruki odabir",
+    "Checkbox": "Potvrdni okvir",
+    "Rating": "Ocijenjivanje",
+    "PriorityScale": "Ljestvica prioriteta"
+  }
+}
