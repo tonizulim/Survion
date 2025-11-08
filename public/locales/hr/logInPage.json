@@ -1,0 +1,9 @@
+{
+  "title": "Dobrodošli natrag",
+  "description": "Unesite podatke za pristup svom računu",
+  "email": "Email",
+  "password": "Lozinka",
+  "noAccount": "Nemate račun? ",
+  "emailPlaceholder" : "Unesite email",
+  "passwordPlaceholder" : "Unesite lozinku"
+}

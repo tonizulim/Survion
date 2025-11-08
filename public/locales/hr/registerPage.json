@@ -1,0 +1,12 @@
+{
+  "title": "Kreirajte račun",
+  "description": "Unesite svoje podatke da započnete",
+  "email": "Email",
+  "password": "Lozinka",
+  "confirmPassword": "Potvrdite lozinku",
+  "emailPlaceholder": "Unesite email",
+  "passwordPlaceholder": "Unesite svoju lozinku",
+  "confirmPasswordPlaceholder": "Ponovite svoju lozinku",
+  "createAccount": "Kreiraj račun",
+  "haveAccount": "Već imate račun?"
+}

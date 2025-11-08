@@ -2,8 +2,8 @@ import { BarChart3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-export function LogInPage() {
-  const { t } = useTranslation("logInPage");
+export function RegisterPage() {
+  const { t } = useTranslation("registerPage");
   const { t: tCommon } = useTranslation("common");
 
   return (
@@ -42,20 +42,31 @@ export function LogInPage() {
                   placeholder={t("passwordPlaceholder")}
                 />
               </div>
+              <div className="space-y-2 flex flex-col mt-3">
+                <label htmlFor="password" className="font-semibold">
+                  {t("confirmPassword")}
+                </label>
+                <input
+                  className="border-2 rounded-md border-accent p-2"
+                  id="password"
+                  type="password"
+                  placeholder={t("confirmPasswordPlaceholder")}
+                />
+              </div>
               <button className="w-full bg-primary text-secondary rounded-md p-2">
-                {tCommon("buttons.logIn")}
+                {tCommon("buttons.singUp")}
               </button>
             </form>
 
             <div className="mt-6 text-center text-sm">
               <span className="text-muted-foreground">
-                {t("noAccount") + " "}
+                {t("haveAccount") + " "}
               </span>
               <Link
                 to="/register"
                 className="text-primary hover:underline font-medium"
               >
-                {tCommon("buttons.singUp")}
+                {tCommon("buttons.logIn")}
               </Link>
             </div>
           </div>

@@ -5,6 +5,8 @@ import "./i18n/i18n.js";
 import { HomePage } from "./pages/HomePage";
 import { NoPage } from "./pages/NoPage";
 import { NavBar } from "./components/NavBar.js";
+import { LogInPage } from "./pages/LogInPage.js";
+import { RegisterPage } from "./pages/RegisterPage.js";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NoPage />} />
+        <Route path="/login" element={<LogInPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

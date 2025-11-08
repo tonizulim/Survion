@@ -22,7 +22,7 @@ i18n
     debug: true,
     fallbackLng: defaultLocale,
     returnObjects: true,
-    ns: ["common", "home", "noPage"],
+    ns: ["common", "home", "noPage", "logInPage", "registerPage"],
     defaultNS: "common",
     interpolation: {
       escapeValue: false,

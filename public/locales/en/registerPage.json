@@ -1,0 +1,12 @@
+{
+  "title": "Create an account",
+  "description": "Enter your information to get started",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm password",
+  "emailPlaceholder" : "you@gmail.com",
+  "passwordPlaceholder" : "Enter your password",
+  "confirmPasswordPlaceholder": "Repeat your password",
+  "createAccount": "Create account",
+  "haveAccount": "Already have an account? "
+}
