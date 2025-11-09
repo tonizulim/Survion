@@ -1,10 +1,21 @@
 import { BarChart3 } from "lucide-react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import type { Credentials } from "../types/credentials";
+import { handleLogin } from "../utils/userUtils";
 
 export function LogInPage() {
   const { t } = useTranslation("logInPage");
   const { t: tCommon } = useTranslation("common");
+
+  const navigate = useNavigate();
+  const [credentials, setCredentials] = useState<Credentials>({
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -19,7 +30,19 @@ export function LogInPage() {
             <p className="text-muted-foreground">{t("description")}</p>
           </header>
           <div>
-            <form className="space-y-4">
+            {error && <p className="mt-1 text-destructive">{error}</p>}
+            <form
+              className="space-y-4"
+              onSubmit={(e) =>
+                handleLogin({
+                  e,
+                  credentials,
+                  setLoading,
+                  navigate,
+                  setError,
+                })
+              }
+            >
               <div className="space-y-2 flex flex-col mt-3">
                 <label htmlFor="email" className="font-semibold">
                   {t("email")}
@@ -29,6 +52,13 @@ export function LogInPage() {
                   id="email"
                   type="text"
                   placeholder={t("emailPlaceholder")}
+                  value={credentials.email}
+                  onChange={(e) =>
+                    setCredentials((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div className="space-y-2 flex flex-col mt-3">
@@ -40,9 +70,20 @@ export function LogInPage() {
                   id="password"
                   type="password"
                   placeholder={t("passwordPlaceholder")}
+                  value={credentials.password}
+                  onChange={(e) =>
+                    setCredentials((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
                 />
               </div>
-              <button className="w-full bg-primary text-secondary rounded-md p-2">
+              <button
+                type="submit"
+                className="w-full bg-primary text-secondary rounded-md p-2"
+                disabled={loading}
+              >
                 {tCommon("buttons.logIn")}
               </button>
             </form>

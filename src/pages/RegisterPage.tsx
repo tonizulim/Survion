@@ -63,7 +63,7 @@ export function RegisterPage() {
                 {t("haveAccount") + " "}
               </span>
               <Link
-                to="/register"
+                to="/login"
                 className="text-primary hover:underline font-medium"
               >
                 {tCommon("buttons.logIn")}
