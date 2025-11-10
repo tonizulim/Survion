@@ -8,6 +8,8 @@ import { NavBar } from "./components/NavBar.js";
 import { LogInPage } from "./pages/LogInPage.js";
 import { RegisterPage } from "./pages/RegisterPage.js";
 import { UserProvider } from "./contexts/UserContext.js";
+import { UserDashboardPage } from "./pages/UserDashboardPage.js";
+import { PrivateRoute } from "./components/PrivateRoute.js";
 
 function App() {
   return (
@@ -19,6 +21,15 @@ function App() {
           <Route path="*" element={<NoPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/register" element={<RegisterPage />} />
+
+          <Route
+            path="/user"
+            element={
+              <PrivateRoute>
+                <UserDashboardPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </UserProvider>
     </BrowserRouter>

@@ -16,7 +16,9 @@ export function NavBar() {
     { href: "/register", label: t("navbar.getStarted") },
   ];
 
-  const navLinks = [...baseLinks];
+  const LoginUserLinks = [{ href: "/user", label: t("navbar.dashboard") }];
+
+  const navLinks = user ? [...LoginUserLinks] : [...baseLinks];
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 fixed w-full top-0 z-500">
