@@ -1,0 +1,15 @@
+{
+  "title": "Registracija uspješna!",
+  "emailVerify": "Molimo provjerite svoj email kako biste potvrdili račun.",
+  "adminVerify": "Nakon potvrde, administrator će pregledati i odobriti vaš račun.",
+  "done": "Gotovo",
+  "step1": "Korak 1: Potvrda emaila",
+  "step1Description": "Kliknite na link za potvrdu poslan na: ",
+  "step2": "Korak 2: Odobrenje od strane administratora",
+  "step2Description": "Pričekajte da administrator odobri vaš račun",
+  "step3": "Korak 3: Počnite stvarati",
+  "step3Description": "Prijavite se i kreirajte svoju prvu anketu",
+  "loginBtn": "Idi na prijavu",
+  "altOption": "ili ",
+  "altOptionBtn": "idi na početnu"
+}

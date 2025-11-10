@@ -22,7 +22,14 @@ i18n
     debug: true,
     fallbackLng: defaultLocale,
     returnObjects: true,
-    ns: ["common", "home", "noPage", "logInPage", "registerPage"],
+    ns: [
+      "common",
+      "home",
+      "noPage",
+      "logInPage",
+      "registerPage",
+      "successRegistrationDialog",
+    ],
     defaultNS: "common",
     interpolation: {
       escapeValue: false,

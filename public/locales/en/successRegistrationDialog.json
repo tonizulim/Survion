@@ -1,0 +1,15 @@
+{
+  "title": "Registration Successful!",
+  "emailVerify": "Please check your email to verify your account. ",
+  "adminVerify": "After verification, an admin will review and approve your account.",
+  "done": "Done",
+  "step1": "Step 1: Verify Email",
+  "step1Description": "Click the verification link sent to: ",
+  "step2": "Step 2: Admin Approval",
+  "step2Description": "Wait for admin to approve your account",
+  "step3": "Step 3: Start Creating",
+  "step3Description": "Login and create your first survey",
+  "loginBtn": "Go to Login",
+  "altOption" :"or ",
+  "altOptionBtn": "go home"
+}
