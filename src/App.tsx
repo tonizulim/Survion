@@ -10,6 +10,7 @@ import { RegisterPage } from "./pages/RegisterPage.js";
 import { UserProvider } from "./contexts/UserContext.js";
 import { UserDashboardPage } from "./pages/UserDashboardPage.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
+import { LoginRegisterBlocker } from "./components/LoginRegisterBlocker.js";
 
 function App() {
   return (
@@ -19,9 +20,22 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NoPage />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-
+          <Route
+            path="/login"
+            element={
+              <LoginRegisterBlocker>
+                <LogInPage />
+              </LoginRegisterBlocker>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <LoginRegisterBlocker>
+                <RegisterPage />
+              </LoginRegisterBlocker>
+            }
+          />
           <Route
             path="/user"
             element={
