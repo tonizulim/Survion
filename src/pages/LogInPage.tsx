@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import type { Credentials } from "../types/credentials";
 import { handleLogin } from "../utils/userUtils";
 import { SuccessRegistrationDialog } from "../components/dialogs/SuccessRegistrationDialog";
-import type { User } from "../types/User";
 import Loading from "../components/Loading";
+import { useUserContext } from "../contexts/UserContext";
 
 export function LogInPage() {
   const { t } = useTranslation("logInPage");
@@ -19,7 +19,7 @@ export function LogInPage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [user, setUser] = useState<User | null>(null);
+  const { user, setLoginUser } = useUserContext();
 
   if (loading) {
     return <Loading />;
@@ -53,7 +53,7 @@ export function LogInPage() {
                 setLoading,
                 navigate,
                 setError,
-                setUser,
+                setLoginUser,
               })
             }
           >

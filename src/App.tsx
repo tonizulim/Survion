@@ -7,17 +7,20 @@ import { NoPage } from "./pages/NoPage";
 import { NavBar } from "./components/NavBar.js";
 import { LogInPage } from "./pages/LogInPage.js";
 import { RegisterPage } from "./pages/RegisterPage.js";
+import { UserProvider } from "./contexts/UserContext.js";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<NoPage />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
+      <UserProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<NoPage />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   );
 }

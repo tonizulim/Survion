@@ -19,12 +19,6 @@ export function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [successRegistration, setSuccessRegistration] = useState(false);
   const [error, setError] = useState("");
-  const user = {
-    email: "",
-    isApproved: false,
-    isEmailVerified: false,
-    isAdmin: false,
-  };
 
   if (loading) {
     return <Loading />;
@@ -32,7 +26,14 @@ export function RegisterPage() {
 
   if (successRegistration) {
     return (
-      <SuccessRegistrationDialog user={{ ...user, email: credentials.email }} />
+      <SuccessRegistrationDialog
+        user={{
+          email: credentials.email,
+          isApproved: false,
+          isEmailVerified: false,
+          isAdmin: false,
+        }}
+      />
     );
   }
 

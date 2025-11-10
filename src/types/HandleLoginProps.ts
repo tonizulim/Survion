@@ -9,5 +9,5 @@ export interface HandleLoginProps {
   setLoading: Dispatch<SetStateAction<boolean>>;
   setError: Dispatch<SetStateAction<string>>;
   navigate: NavigateFunction;
-  setUser: Dispatch<SetStateAction<User | null>>;
+  setLoginUser: (userData: User) => void;
 }
