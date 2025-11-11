@@ -11,6 +11,7 @@ import { UserProvider } from "./contexts/UserContext.js";
 import { UserDashboardPage } from "./pages/UserDashboardPage.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
 import { LoginRegisterBlocker } from "./components/LoginRegisterBlocker.js";
+import { CreateNewSurvey } from "./pages/CreateNewSurvey.js";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/survey/new" element={<CreateNewSurvey />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>
