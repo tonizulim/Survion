@@ -11,6 +11,7 @@
     "addQuestion":"Add Question",
     "noQuestions": "No questions yet",
     "addFirstQuestion": "Add Your First Question",
+    "submitting" : "Submitting Survey",
     "create":"Create Survey",
     "cancel":"Cancel"
 }

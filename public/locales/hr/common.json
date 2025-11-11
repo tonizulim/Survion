@@ -2,7 +2,8 @@
   "navbar": {
     "home": "Početna",
     "about": "O nama",
-    "getStarted": "Registriraj se"
+    "getStarted": "Registriraj se",
+    "dashboard": "Korisnička stranica"
   },
   "buttons": {
     "save": "Spremi",

@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { QuestionEditor } from "../components/QuestionEditor";
 import { useNewSurvey } from "../hooks/useNewSurvey";
+import { handleSubmitSurvey } from "../utils/surveyUtils";
+import { useState } from "react";
+import { SuccessSubmittedSurveyDialog } from "../components/dialogs/SuccessSubmittedSurveyDialog";
 
 export function CreateNewSurveyPage() {
   const { t } = useTranslation("createNewSurveyPage");
@@ -18,6 +21,14 @@ export function CreateNewSurveyPage() {
     deleteQuestionOption,
     editQuestionRating,
   } = useNewSurvey();
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  if (isSubmitted) {
+    return <SuccessSubmittedSurveyDialog title={survey.title || "null"} />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-10 mt-10">
@@ -38,7 +49,17 @@ export function CreateNewSurveyPage() {
             <p className="text-muted-foreground">{t("description")}</p>
           </div>
 
-          <form>
+          <form
+            onSubmit={(e) =>
+              handleSubmitSurvey({
+                e,
+                survey,
+                setIsSubmitted,
+                setError,
+                setLoading,
+              })
+            }
+          >
             <div className="flex flex-col mt-3">
               <label htmlFor="title" className="font-semibold">
                 {t("surveyTitle")}
@@ -165,15 +186,26 @@ export function CreateNewSurveyPage() {
             </div>
 
             <div className="flex items-center gap-4 pt-4 mt-3">
-              <button
-                type="submit"
-                className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
-              >
-                {t("create")}
-              </button>
+              {loading ? (
+                <button
+                  disabled
+                  type="button"
+                  className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-wait"
+                >
+                  {t("submitting")}
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                >
+                  {t("create")}
+                </button>
+              )}
+
               <button
                 type="button"
-                className="text-md px-8 bg-secondary text-secondary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                className="text-md px-8 bg-secondary text-secondary-foreground hover:bg-destructive rounded-lg p-2 font-semibold flex items-center cursor-pointer"
               >
                 {t("cancel")}
               </button>

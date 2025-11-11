@@ -1,7 +1,6 @@
 import type { HandleLoginProps } from "../types/HandleLoginProps";
 import { login, register } from "../services/userService";
 import type { HandleRegisterProps } from "../types/HandleRegisterProps";
-import { useUserContext } from "../contexts/UserContext";
 
 export const handleLogin = async ({
   e,
@@ -20,8 +19,6 @@ export const handleLogin = async ({
 
     if (res.status === 200) {
       const user = res.data;
-
-      console.log(user);
 
       setLoginUser({
         email: credentials.email,
