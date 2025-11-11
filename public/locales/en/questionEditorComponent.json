@@ -1,0 +1,19 @@
+{
+    "questionType":"Question Type",
+    "questionTypes": {
+        "textAnswer": "Text Answer",
+        "multipleChoice" : "Multiple Choice",
+        "checkbox":"Checkbox",
+        "rating" :"Rating",
+        "ranking": "Ranking (Drag & Drop)"
+    },
+    "question" : "Question",
+    "questionPlaceholder" : "Enter your question",
+    "options":"Options",
+    "option":"Option ",
+    "addOption" : "Add option",
+    "minValue": "Minimum value",
+    "maxValue": "Maximum value",
+    "required" : "Required",
+    "deleteQuestion" : " Delete Question"   
+}

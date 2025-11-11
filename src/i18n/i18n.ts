@@ -29,6 +29,8 @@ i18n
       "logInPage",
       "registerPage",
       "successRegistrationDialog",
+      "createNewSurveyPage",
+      "questionEditorComponent",
     ],
     defaultNS: "common",
     interpolation: {

@@ -1,0 +1,16 @@
+{
+    "back": "Povratak",
+    "title": "Stvori novu anketu",
+    "description": "Izradi svoju anletu s više vrsta pitanja",
+    "surveyTitle": "Naslov Ankete",
+    "surveyTitlePlaceholder": "Unesi naslov ankete",
+    "surveyDescription": "Opis",
+    "surveyDescriptionPlaceholder":"Unesi opis ankete (opcionalno)",
+    "setTimeLimit": "Postavi vremensko ograničenje",
+    "timeLimit": "Vremensko ograničenje (minute)",
+    "addQuestion": "Dodaj pitanje",
+    "noQuestions": "Još nema pitanja",
+    "addFirstQuestion": "Dodaj svoje prvo pitanje",
+    "create": "Stvori anketu",
+    "cancel": "Otkaži"
+}

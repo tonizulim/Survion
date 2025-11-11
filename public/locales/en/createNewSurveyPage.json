@@ -1,0 +1,16 @@
+{
+    "back":  "Back to Dashboard",
+    "title": "Create New Survey",
+    "description": "Build your survey with multiple question types",
+    "surveyTitle": "Survey Title",
+    "surveyTitlePlaceholder": "Enter survey title",
+    "surveyDescription": "Description",
+    "surveyDescriptionPlaceholder":"Enter survey description (optional)",
+    "setTimeLimit": "Set time limit",
+    "timeLimit": "Time limit (minutes)",
+    "addQuestion":"Add Question",
+    "noQuestions": "No questions yet",
+    "addFirstQuestion": "Add Your First Question",
+    "create":"Create Survey",
+    "cancel":"Cancel"
+}

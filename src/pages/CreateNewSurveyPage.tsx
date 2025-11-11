@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { QuestionEditor } from "../components/QuestionEditor";
 import { useNewSurvey } from "../hooks/useNewSurvey";
 
-export function CreateNewSurvey() {
-  const { t } = useTranslation("noPage");
+export function CreateNewSurveyPage() {
+  const { t } = useTranslation("createNewSurveyPage");
   const {
     survey,
     setSurvey,
@@ -28,27 +28,25 @@ export function CreateNewSurvey() {
             className="flex flex-row items-center border-2 text-md rounded-xl p-2"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Dashboard
+            {t("back")}
           </button>
         </Link>
 
         <div className="mx-auto py-4 max-w-4xl">
           <div>
-            <h1 className="text-xl font-semibold">Create New Survey</h1>
-            <p className="text-muted-foreground">
-              Build your survey with multiple question types
-            </p>
+            <h1 className="text-xl font-semibold">{t("title")}</h1>
+            <p className="text-muted-foreground">{t("description")}</p>
           </div>
 
           <form>
             <div className="flex flex-col mt-3">
               <label htmlFor="title" className="font-semibold">
-                Survey Title
+                {t("surveyTitle")}
               </label>
               <input
                 className="border-2 rounded-md border-accent p-2"
                 id="title"
-                placeholder="Enter survey title"
+                placeholder={t("surveyTitlePlaceholder")}
                 value={survey.title}
                 onChange={(e) =>
                   setSurvey((prev) => ({
@@ -61,7 +59,7 @@ export function CreateNewSurvey() {
 
             <div className="flex flex-col mt-3">
               <label htmlFor="description" className="font-semibold">
-                Description
+                {t("surveyDescription")}
               </label>
               <input
                 className="border-2 rounded-md border-accent p-2"
@@ -73,7 +71,7 @@ export function CreateNewSurvey() {
                     description: e.target.value,
                   }))
                 }
-                placeholder="Enter survey description (optional)"
+                placeholder={t("surveyDescriptionPlaceholder")}
               />
             </div>
 
@@ -92,13 +90,13 @@ export function CreateNewSurvey() {
                   className="form-checkbox h-4 w-4 rounded-2xl accent-foreground"
                 />
                 <label htmlFor="timeLimit" className="font-semibold">
-                  Set time limit
+                  {t("setTimeLimit")}
                 </label>
               </div>
               {!!survey.duration && (
                 <div className="ml-6 space-y-2 flex flex-col">
                   <label htmlFor="timeLimitMinutes" className="font-semibold">
-                    Time limit (minutes)
+                    {t("timeLimit")}
                   </label>
                   <input
                     id="timeLimitMinutes"
@@ -123,23 +121,25 @@ export function CreateNewSurvey() {
                 <button
                   type="button"
                   onClick={addQuestion}
-                  className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                  className="text-md px-4 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Question
+                  {t("addQuestion")}
                 </button>
               </div>
 
               {survey.questions.length === 0 ? (
                 <div className="border-dashed border-2 rounded-2xl pt-12 pb-12 text-center flex flex-col items-center justify-center">
-                  <p className="text-muted-foreground mb-4">No questions yet</p>
+                  <p className="text-muted-foreground mb-4">
+                    {t("noQuestions")}
+                  </p>
                   <button
                     type="button"
                     onClick={addQuestion}
                     className="border-solid border-2 border-muted rounded-xl p-2 flex items-center cursor-pointer"
                   >
                     <Plus className="h-4 w-4 mr-2" />
-                    Add Your First Question
+                    {t("addFirstQuestion")}
                   </button>
                 </div>
               ) : (
@@ -169,13 +169,13 @@ export function CreateNewSurvey() {
                 type="submit"
                 className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
               >
-                Create Survey
+                {t("create")}
               </button>
               <button
                 type="button"
                 className="text-md px-8 bg-secondary text-secondary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
               >
-                Cancel
+                {t("cancel")}
               </button>
             </div>
           </form>

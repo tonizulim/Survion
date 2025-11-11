@@ -1,0 +1,19 @@
+{
+    "questionType": "Vrsta pitanja",
+    "questionTypes": {
+        "textAnswer": "Tekstualni odgovor",
+        "multipleChoice": "Višestruki izbor",
+        "checkbox": "Potvrdni okvir",
+        "rating": "Ocjenjivanje",
+        "ranking": "Rangiranje"
+    },
+    "question": "Pitanje",
+    "questionPlaceholder": "Unesi svoje pitanje",
+    "options": "Opcije",
+    "option": "Opcija ",
+    "addOption": "Dodaj opciju",
+    "minValue": "Minimalna vrijednost",
+    "maxValue": "Maksimalna vrijednost",
+    "required": "Obavezno",
+    "deleteQuestion": "Izbriši pitanje"
+}

@@ -1,6 +1,7 @@
 import { Trash2, Plus } from "lucide-react";
 import type { QuestionEditorProps } from "../types/QuestionEditorProps";
 import { QuestionType } from "../enums/QuestionType";
+import { useTranslation } from "react-i18next";
 
 export function QuestionEditor({
   question,
@@ -13,11 +14,13 @@ export function QuestionEditor({
   deleteQuestionOption,
   editQuestionRating,
 }: QuestionEditorProps) {
+  const { t } = useTranslation("questionEditorComponent");
+
   return (
     <>
       <div className="border-accent border-2 rounded-xl p-6">
         <div className="space-y-2">
-          <label className="font-semibold">Question Type</label>
+          <label className="font-semibold">{t("questionType")}</label>
           <select
             id="questionType"
             name="questionType"
@@ -29,16 +32,26 @@ export function QuestionEditor({
               })
             }
           >
-            <option value={QuestionType.TextQuestion}>Text Answer</option>
-            <option value={QuestionType.MultipleChoice}>Multiple Choice</option>
-            <option value={QuestionType.Checkbox}>Checkbox</option>
-            <option value={QuestionType.Rating}>Rating</option>
-            <option value={QuestionType.Ranking}>Ranking (Drag & Drop)</option>
+            <option value={QuestionType.TextQuestion}>
+              {t("questionTypes.textAnswer")}
+            </option>
+            <option value={QuestionType.MultipleChoice}>
+              {t("questionTypes.multipleChoice")}
+            </option>
+            <option value={QuestionType.Checkbox}>
+              {t("questionTypes.checkbox")}
+            </option>
+            <option value={QuestionType.Rating}>
+              {t("questionTypes.rating")}
+            </option>
+            <option value={QuestionType.Ranking}>
+              {t("questionTypes.ranking")}
+            </option>
           </select>
         </div>
         <div className="flex flex-col mt-3">
           <label htmlFor="text" className="font-semibold">
-            Question
+            {t("question")}
           </label>
           <input
             className="border-2 rounded-md border-accent p-2 mt-1"
@@ -50,7 +63,7 @@ export function QuestionEditor({
                 question: { ...question, text: e.target.value },
               })
             }
-            placeholder="Enter your question"
+            placeholder={t("questionPlaceholder")}
           />
         </div>
         <div className=" pt-3">
@@ -59,7 +72,7 @@ export function QuestionEditor({
             question.questionTypeId === QuestionType.Ranking) && (
             <div className="space-y-2">
               <label htmlFor="Options" className="font-semibold">
-                Options
+                {t("options")}
               </label>
               <div className="space-y-2 w-full">
                 {question.options?.map((option) => (
@@ -97,14 +110,14 @@ export function QuestionEditor({
                   onClick={() =>
                     addQuestionOption({
                       questionPosition,
-                      option: `Option ${question.options.length + 1}`,
+                      option: t("option") + (question.options.length + 1),
                     })
                   }
                   type="button"
                   className="text-md px-8 bg-secondary text-secondary-foreground hover:bg-accent rounded-lg p-2 font-semibold flex items-center cursor-pointer w-full justify-center"
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add option
+                  {t("addOption")}
                 </button>
               </div>
             </div>
@@ -114,7 +127,7 @@ export function QuestionEditor({
             <div className="space-y-2 flex gap-2">
               <div className=" space-y-2 flex flex-col w-full">
                 <label htmlFor="minRank" className="font-semibold">
-                  Minimum value
+                  {t("minValue")}
                 </label>
                 <input
                   id="minRank"
@@ -134,7 +147,7 @@ export function QuestionEditor({
               </div>
               <div className=" space-y-2 flex flex-col w-full">
                 <label htmlFor="maxRank" className="font-semibold">
-                  Maximum value
+                  {t("maxValue")}
                 </label>
                 <input
                   id="maxRank"
@@ -169,7 +182,7 @@ export function QuestionEditor({
               }
             />
             <label htmlFor="required" className="font-semibold">
-              Required
+              {t("required")}
             </label>
           </div>
           <button
@@ -178,7 +191,7 @@ export function QuestionEditor({
             className="text-md px-8 bg-destructive text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
           >
             <Trash2 className="h-4 w-4 mr-2" />
-            Delete Question
+            {t("deleteQuestion")}
           </button>
         </div>
       </div>
