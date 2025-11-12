@@ -5,7 +5,7 @@ export type Question = {
   questionPosition: number;
   isRequired: boolean;
   questionTypeId: number;
-  options: QuestionOption[];
+  QuestionOptions: QuestionOption[];
   minRating?: number;
   maxRating?: number;
 };

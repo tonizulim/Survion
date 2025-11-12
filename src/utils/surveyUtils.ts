@@ -10,6 +10,8 @@ export const handleSubmitSurvey = async ({
 }: HandleSubmitSurveyProps) => {
   e.preventDefault();
 
+  console.log(survey);
+
   setLoading(true);
 
   try {

@@ -32,7 +32,7 @@ export function useNewSurvey() {
           questionPosition: survey.questions.length,
           isRequired: false,
           questionTypeId: 1,
-          options: [],
+          QuestionOptions: [],
         },
       ],
     }));
@@ -68,14 +68,17 @@ export function useNewSurvey() {
     questionPosition,
   }: addQuestionOptionsProps) => {
     const newOption: QuestionOption = {
-      id: crypto.randomUUID(),
-      value: option,
+      key: Date.now() + Math.floor(Math.random() * 1000),
+      text: option,
     };
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const targetQuestion = {
         ...updatedQuestions[questionPosition],
-        options: [...updatedQuestions[questionPosition].options, newOption],
+        QuestionOptions: [
+          ...updatedQuestions[questionPosition].QuestionOptions,
+          newOption,
+        ],
       };
       updatedQuestions[questionPosition] = targetQuestion;
 
@@ -93,11 +96,11 @@ export function useNewSurvey() {
   }: editQuestionOptionsProps) => {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
-      const updateOptions = [...updatedQuestions[questionPosition].options].map(
-        (o) => (o.id === optionId ? { ...o, value: option } : o)
-      );
+      const updateOptions = [
+        ...updatedQuestions[questionPosition].QuestionOptions,
+      ].map((o) => (o.key === optionId ? { ...o, value: option } : o));
 
-      updatedQuestions[questionPosition].options = updateOptions;
+      updatedQuestions[questionPosition].QuestionOptions = updateOptions;
 
       return {
         ...prev,
@@ -113,10 +116,10 @@ export function useNewSurvey() {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const updatedOptions = [
-        ...updatedQuestions[questionPosition].options,
-      ].filter((o) => o.id !== optionId);
+        ...updatedQuestions[questionPosition].QuestionOptions,
+      ].filter((o) => o.key !== optionId);
 
-      updatedQuestions[questionPosition].options = updatedOptions;
+      updatedQuestions[questionPosition].QuestionOptions = updatedOptions;
 
       return {
         ...prev,

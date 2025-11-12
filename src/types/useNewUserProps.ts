@@ -16,18 +16,17 @@ export interface deleteQuestionProps {
 
 export interface addQuestionOptionsProps {
   option: string;
-
   questionPosition: number;
 }
 
 export interface editQuestionOptionsProps {
   option: string;
-  optionId: string;
+  optionId: number;
   questionPosition: number;
 }
 
 export interface deleteQuestionOptionProps {
-  optionId: string;
+  optionId: number;
   questionPosition: number;
 }
 

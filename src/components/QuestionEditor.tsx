@@ -75,9 +75,9 @@ export function QuestionEditor({
                 {t("options")}
               </label>
               <div className="space-y-2 w-full">
-                {question.options?.map((option) => (
+                {question.QuestionOptions?.map((option) => (
                   <div
-                    key={option.id}
+                    key={option.key}
                     className="flex items-center gap-2  mt-1 w-full"
                   >
                     <input
@@ -86,11 +86,11 @@ export function QuestionEditor({
                       onChange={(e) =>
                         editQuestionOption({
                           option: e.target.value,
-                          optionId: option.id,
+                          optionId: option.key,
                           questionPosition,
                         })
                       }
-                      value={option.value}
+                      value={option.text}
                     />
                     <button
                       type="button"
@@ -98,7 +98,7 @@ export function QuestionEditor({
                       onClick={() =>
                         deleteQuestionOption({
                           questionPosition,
-                          optionId: option.id,
+                          optionId: option.key,
                         })
                       }
                     >
@@ -110,7 +110,8 @@ export function QuestionEditor({
                   onClick={() =>
                     addQuestionOption({
                       questionPosition,
-                      option: t("option") + (question.options.length + 1),
+                      option:
+                        t("option") + (question.QuestionOptions.length + 1),
                     })
                   }
                   type="button"

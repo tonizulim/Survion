@@ -1,4 +1,5 @@
 export type QuestionOption = {
-  id: string;
-  value: string;
+  //id: number;
+  text: string;
+  key: number;
 };
