@@ -5,7 +5,7 @@
     "surveyTitle": "Naslov Ankete",
     "surveyTitlePlaceholder": "Unesi naslov ankete",
     "surveyDescription": "Opis",
-    "surveyDescriptionPlaceholder":"Unesi opis ankete (opcionalno)",
+    "surveyDescriptionPlaceholder":"Unesi opis ankete",
     "setTimeLimit": "Postavi vremensko ograničenje",
     "timeLimit": "Vremensko ograničenje (minute)",
     "addQuestion": "Dodaj pitanje",

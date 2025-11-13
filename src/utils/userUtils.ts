@@ -31,7 +31,7 @@ export const handleLogin = async ({
         navigate("/");
       }
     } else {
-      setError(res.data);
+      setError(res.data.detail);
     }
   } catch (err) {
     console.error(err);
@@ -57,7 +57,7 @@ export const handleRegister = async ({
     if (res.status === 200) {
       setSuccessRegistration(true);
     } else {
-      setError(res.data);
+      setError(res.data.detail);
     }
   } catch (err) {
     console.error(err);

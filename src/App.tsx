@@ -12,6 +12,7 @@ import { UserDashboardPage } from "./pages/UserDashboardPage.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
 import { LoginRegisterBlocker } from "./components/LoginRegisterBlocker.js";
 import { CreateNewSurveyPage } from "./pages/CreateNewSurveyPage.js";
+import { TakeSurvey } from "./pages/TakeSurvey.js";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             }
           />
           <Route path="/survey/new" element={<CreateNewSurveyPage />} />
+          <Route path="/survey/take/:id" element={<TakeSurvey />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>

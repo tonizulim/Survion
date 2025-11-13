@@ -49,7 +49,9 @@ export function RegisterPage() {
           <p className="text-muted-foreground">{t("description")}</p>
         </header>
         <div>
-          {error && <p className="mt-1 text-destructive">{error}</p>}
+          {error && (
+            <p className="mt-1 text-destructive whitespace-pre-line">{error}</p>
+          )}
           <form
             className="space-y-4"
             onSubmit={(e) =>

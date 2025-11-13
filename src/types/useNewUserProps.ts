@@ -1,4 +1,5 @@
 import type { Question } from "./Question";
+import type { ErrorObject } from "./ErrorObject";
 
 export interface editQuestionTypeProps {
   position: number;
@@ -34,4 +35,8 @@ export interface editQuestionRatingProps {
   questionPosition: number;
   minValue: number;
   maxValue: number;
+}
+
+export interface setErrorsProps {
+  surveyValidationError: ErrorObject;
 }

@@ -8,6 +8,7 @@ import type {
   editQuestionProps,
   editQuestionRatingProps,
   editQuestionTypeProps,
+  setErrorsProps,
 } from "../types/useNewUserProps";
 import type { QuestionOption } from "../types/QuestionOption";
 
@@ -19,6 +20,7 @@ export function useNewSurvey() {
     isActive: true,
     duration: 0,
     authorEmail: "",
+    errors: "",
     questions: [],
   });
 
@@ -29,9 +31,10 @@ export function useNewSurvey() {
         ...prev.questions,
         {
           text: "",
-          questionPosition: survey.questions.length,
+          questionPosition: survey.questions.length + 1,
           isRequired: false,
           questionTypeId: 1,
+          errors: "",
           QuestionOptions: [],
         },
       ],
@@ -146,6 +149,41 @@ export function useNewSurvey() {
     });
   };
 
+  const removeErrors = () => {
+    setSurvey((prev) => {
+      const updatedQuestions = [...prev.questions].map((q) => ({
+        ...q,
+        errors: "",
+      }));
+
+      return {
+        ...prev,
+        errors: "",
+        questions: updatedQuestions,
+      };
+    });
+  };
+
+  const setErrors = ({ surveyValidationError }: setErrorsProps) => {
+    console.log(surveyValidationError);
+    const validationErrors = surveyValidationError[
+      "Validation failed"
+    ] as Record<string, string>;
+    setSurvey((prev) => {
+      const updatedQuestions = [...prev.questions].map((q, index) => ({
+        ...q,
+        //errors: surveyValidationError[surveyValidationError.title][`questions.${index}`] || "",
+        errors: validationErrors[`questions.${index}`],
+      }));
+
+      return {
+        ...prev,
+        errors: surveyValidationError.detail,
+        questions: updatedQuestions,
+      };
+    });
+  };
+
   return {
     survey,
     setSurvey,
@@ -157,5 +195,7 @@ export function useNewSurvey() {
     editQuestionOption,
     deleteQuestionOption,
     editQuestionRating,
+    removeErrors,
+    setErrors,
   };
 }

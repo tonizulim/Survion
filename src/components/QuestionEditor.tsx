@@ -19,6 +19,11 @@ export function QuestionEditor({
   return (
     <>
       <div className="border-accent border-2 rounded-xl p-6">
+        {question.errors && (
+          <p className="mt-1 text-destructive whitespace-pre-line">
+            {question.errors}
+          </p>
+        )}
         <div className="space-y-2">
           <label className="font-semibold">{t("questionType")}</label>
           <select

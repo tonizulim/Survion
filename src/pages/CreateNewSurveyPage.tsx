@@ -20,10 +20,10 @@ export function CreateNewSurveyPage() {
     editQuestionOption,
     deleteQuestionOption,
     editQuestionRating,
+    setErrors,
   } = useNewSurvey();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   if (isSubmitted) {
@@ -48,14 +48,18 @@ export function CreateNewSurveyPage() {
             <h1 className="text-xl font-semibold">{t("title")}</h1>
             <p className="text-muted-foreground">{t("description")}</p>
           </div>
-          {error && <p className="mt-1 text-destructive">{error}</p>}
+          {survey.errors && (
+            <p className="mt-1 text-destructive whitespace-pre-line">
+              {survey.errors}
+            </p>
+          )}
           <form
             onSubmit={(e) =>
               handleSubmitSurvey({
                 e,
                 survey,
                 setIsSubmitted,
-                setError,
+                setErrors,
                 setLoading,
               })
             }

@@ -1,16 +1,33 @@
-import { submitSurvey } from "../services/surveyService";
+import { getSurveyById, submitSurvey } from "../services/surveyService";
+import type { HandleFetchSurveyProps } from "../types/HandleFetchSurveyProps";
 import type { HandleSubmitSurveyProps } from "../types/HandleSubmitSurveyProps";
+
+export const handleFetchSurvey = async ({
+  setSurvey,
+  setLoading,
+  id,
+}: HandleFetchSurveyProps) => {
+  setLoading(true);
+
+  try {
+    const res = await getSurveyById({ id });
+    if (res.status === 200) {
+      setSurvey(res.data);
+    }
+  } catch (error) {
+    console.error("Failed to load survey", error);
+  }
+  setLoading(false);
+};
 
 export const handleSubmitSurvey = async ({
   e,
   survey,
   setLoading,
   setIsSubmitted,
-  setError,
+  setErrors,
 }: HandleSubmitSurveyProps) => {
   e.preventDefault();
-
-  console.log(survey);
 
   setLoading(true);
 
@@ -20,7 +37,7 @@ export const handleSubmitSurvey = async ({
     if (res.status === 200) {
       setIsSubmitted(true);
     } else {
-      setError(res.data);
+      setErrors({ surveyValidationError: res.data });
     }
   } catch (err) {
     console.error(err);

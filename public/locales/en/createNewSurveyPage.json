@@ -5,7 +5,7 @@
     "surveyTitle": "Survey Title",
     "surveyTitlePlaceholder": "Enter survey title",
     "surveyDescription": "Description",
-    "surveyDescriptionPlaceholder":"Enter survey description (optional)",
+    "surveyDescriptionPlaceholder":"Enter survey description",
     "setTimeLimit": "Set time limit",
     "timeLimit": "Time limit (minutes)",
     "addQuestion":"Add Question",
