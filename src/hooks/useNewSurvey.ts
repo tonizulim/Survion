@@ -35,7 +35,7 @@ export function useNewSurvey() {
           isRequired: false,
           questionTypeId: 1,
           errors: "",
-          QuestionOptions: [],
+          questionOptions: [],
         },
       ],
     }));
@@ -78,8 +78,8 @@ export function useNewSurvey() {
       const updatedQuestions = [...prev.questions];
       const targetQuestion = {
         ...updatedQuestions[questionPosition],
-        QuestionOptions: [
-          ...updatedQuestions[questionPosition].QuestionOptions,
+        questionOptions: [
+          ...updatedQuestions[questionPosition].questionOptions,
           newOption,
         ],
       };
@@ -100,10 +100,10 @@ export function useNewSurvey() {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const updateOptions = [
-        ...updatedQuestions[questionPosition].QuestionOptions,
+        ...updatedQuestions[questionPosition].questionOptions,
       ].map((o) => (o.key === optionId ? { ...o, value: option } : o));
 
-      updatedQuestions[questionPosition].QuestionOptions = updateOptions;
+      updatedQuestions[questionPosition].questionOptions = updateOptions;
 
       return {
         ...prev,
@@ -119,10 +119,10 @@ export function useNewSurvey() {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const updatedOptions = [
-        ...updatedQuestions[questionPosition].QuestionOptions,
+        ...updatedQuestions[questionPosition].questionOptions,
       ].filter((o) => o.key !== optionId);
 
-      updatedQuestions[questionPosition].QuestionOptions = updatedOptions;
+      updatedQuestions[questionPosition].questionOptions = updatedOptions;
 
       return {
         ...prev,

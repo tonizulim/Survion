@@ -1,12 +1,24 @@
-import type { TakeQuestionProps } from "../types/TakeQuestionProps";
+import { twMerge } from "tailwind-merge";
+import type { TakeCheckboxQuestionProps } from "../types/TakeCheckboxQuestionProps";
 
-export function TakeCheckboxQuestion({ question, index }: TakeQuestionProps) {
+export function TakeCheckboxQuestion({
+  question,
+  answer,
+  editCheckboxAnswer,
+  index,
+}: TakeCheckboxQuestionProps) {
   return (
     <div>
-      {question.questionOptions?.map((o, index) => (
+      {question.questionOptions?.map((o, OptionIndex) => (
         <button
-          key={o.id || index}
-          className="w-full text-center bg-accent mt-2 rounded-md cursor-pointer"
+          key={o.id || OptionIndex}
+          onClick={() =>
+            editCheckboxAnswer({ questionPosition: index, questionOption: o })
+          }
+          className={twMerge(
+            "w-full text-center bg-accent font-semibold mt-2 rounded-md cursor-pointer",
+            o == answer?.answerOptions[0] && "bg-selected"
+          )}
         >
           {o.text}
         </button>

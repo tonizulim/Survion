@@ -6,7 +6,16 @@ import { TakeRankingQuestion } from "./TakeRankingQuestion";
 import { TakeRatingQuestion } from "./TakeRatingQuestion";
 import { TakeTextQuestion } from "./TakeTextQuestion";
 
-export function TakeQuestion({ question, index }: TakeQuestionProps) {
+export function TakeQuestion({
+  question,
+  answer,
+  index,
+  editTextAnswer,
+  editRatingAnswer,
+  editCheckboxAnswer,
+  editRankingAnswer,
+  editMultipleChoiceAnswer,
+}: TakeQuestionProps) {
   return (
     <div className="m-4 p-6 w-full md:w-3xl rounded-2xl border-2 shadow-lg">
       <h1 className="text-xl font-semibold m-3">
@@ -16,17 +25,50 @@ export function TakeQuestion({ question, index }: TakeQuestionProps) {
       {(() => {
         switch (question.questionTypeId) {
           case QuestionType.TextQuestion:
-            return <TakeTextQuestion question={question} index={index} />;
+            return (
+              <TakeTextQuestion
+                question={question}
+                answer={answer}
+                index={index}
+                editTextAnswer={editTextAnswer}
+              />
+            );
           case QuestionType.Checkbox:
-            return <TakeCheckboxQuestion question={question} index={index} />;
+            return (
+              <TakeCheckboxQuestion
+                question={question}
+                answer={answer}
+                index={index}
+                editCheckboxAnswer={editCheckboxAnswer}
+              />
+            );
           case QuestionType.MultipleChoice:
             return (
-              <TakeMultipleChoiceQuestion question={question} index={index} />
+              <TakeMultipleChoiceQuestion
+                question={question}
+                answer={answer}
+                index={index}
+                editMultipleChoiceAnswer={editMultipleChoiceAnswer}
+              />
             );
           case QuestionType.Ranking:
-            return <TakeRankingQuestion question={question} index={index} />;
+            return (
+              <TakeRankingQuestion
+                question={question}
+                answer={answer}
+                index={index}
+                editRankingAnswer={editRankingAnswer}
+              />
+            );
           case QuestionType.Rating:
-            return <TakeRatingQuestion question={question} index={index} />;
+            return (
+              <TakeRatingQuestion
+                question={question}
+                answer={answer}
+                index={index}
+                editRatingAnswer={editRatingAnswer}
+              />
+            );
           default:
             break;
         }

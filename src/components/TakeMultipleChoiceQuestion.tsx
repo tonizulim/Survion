@@ -1,15 +1,27 @@
-import type { TakeQuestionProps } from "../types/TakeQuestionProps";
+import { twMerge } from "tailwind-merge";
+import type { TakeMultipleChoiceQuestionProps } from "../types/TakeMultipleChoiceQuestionProps";
 
 export function TakeMultipleChoiceQuestion({
   question,
+  answer,
+  editMultipleChoiceAnswer,
   index,
-}: TakeQuestionProps) {
+}: TakeMultipleChoiceQuestionProps) {
   return (
     <div>
-      {question.questionOptions?.map((o, index) => (
+      {question.questionOptions?.map((o, OptionIndex) => (
         <button
-          key={o.id || index}
-          className="w-full text-center bg-accent mt-2 rounded-md cursor-pointer"
+          key={o.id || OptionIndex}
+          onClick={() =>
+            editMultipleChoiceAnswer({
+              questionPosition: index,
+              questionOption: o,
+            })
+          }
+          className={twMerge(
+            "w-full text-center bg-accent font-semibold mt-2 rounded-md cursor-pointer",
+            answer?.answerOptions.includes(o) && "bg-selected"
+          )}
         >
           {o.text}
         </button>

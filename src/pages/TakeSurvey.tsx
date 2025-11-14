@@ -4,13 +4,24 @@ import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import { SurveyNotFound } from "../components/SurveyNotFound";
 import { TakeQuestion } from "../components/TakeQuestion";
+import { useNewAnswers } from "../hooks/useNewAnswers";
 
 export function TakeSurvey() {
   const { t } = useTranslation("noPage");
   const { id } = useParams<{ id: string }>();
   const { survey, loading } = useSurveyById(Number(id));
+  const {
+    answers,
+    loadingAnswers,
+    editTextAnswer,
+    editRatingAnswer,
+    editCheckboxAnswer,
+    editMultipleChoiceAnswer,
+    editRankingAnswer,
+    handleSubmitAnswers,
+  } = useNewAnswers(survey?.questions || []);
 
-  if (loading) {
+  if (loading || loadingAnswers) {
     return <Loading />;
   }
 
@@ -28,8 +39,26 @@ export function TakeSurvey() {
       </div>
 
       {survey.questions.map((q, index) => (
-        <TakeQuestion key={q.id} question={q} index={index} />
+        <TakeQuestion
+          key={q.id}
+          question={q}
+          answer={answers[index]}
+          index={index}
+          editTextAnswer={editTextAnswer}
+          editRatingAnswer={editRatingAnswer}
+          editCheckboxAnswer={editCheckboxAnswer}
+          editRankingAnswer={editRankingAnswer}
+          editMultipleChoiceAnswer={editMultipleChoiceAnswer}
+        />
       ))}
+      <button
+        className="w-full bg-primary text-primary-foreground md:w-3xl rounded-md border-2 text-xl p-1 cursor-pointer"
+        onClick={() => handleSubmitAnswers()}
+      >
+        Submit
+      </button>
+
+      <button onClick={() => console.log(answers)}>aaaa</button>
     </div>
   );
 }
