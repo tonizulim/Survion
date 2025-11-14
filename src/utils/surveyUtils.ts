@@ -1,4 +1,4 @@
-import { getSurveyById, submitSurvey } from "../services/surveyService";
+import { getSurveyById, postSurvey } from "../services/surveyService";
 import type { HandleFetchSurveyProps } from "../types/HandleFetchSurveyProps";
 import type { HandleSubmitSurveyProps } from "../types/HandleSubmitSurveyProps";
 
@@ -32,7 +32,7 @@ export const handleSubmitSurvey = async ({
   setLoading(true);
 
   try {
-    const res = await submitSurvey({ survey });
+    const res = await postSurvey({ survey });
 
     if (res.status === 200) {
       setIsSubmitted(true);

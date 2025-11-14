@@ -12,7 +12,7 @@ export const getSurveyById = async ({ id }: GetSurveyByIdProps) => {
   }
 };
 
-export const submitSurvey = async ({ survey }: SubmitSurveyProps) => {
+export const postSurvey = async ({ survey }: SubmitSurveyProps) => {
   try {
     const response = await apiClient.post("/survey", survey);
 

@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import { SurveyNotFound } from "../components/SurveyNotFound";
 import { TakeQuestion } from "../components/TakeQuestion";
 import { useNewAnswers } from "../hooks/useNewAnswers";
+import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnwersDialog";
 
 export function TakeSurvey() {
   const { t } = useTranslation("noPage");
@@ -12,17 +13,22 @@ export function TakeSurvey() {
   const { survey, loading } = useSurveyById(Number(id));
   const {
     answers,
+    isSubmitted,
     loadingAnswers,
     editTextAnswer,
     editRatingAnswer,
     editCheckboxAnswer,
     editMultipleChoiceAnswer,
     editRankingAnswer,
-    handleSubmitAnswers,
+    submitAnswers,
   } = useNewAnswers(survey?.questions || []);
 
   if (loading || loadingAnswers) {
     return <Loading />;
+  }
+
+  if (isSubmitted) {
+    return <SuccessSubmittedAnswersDialog />;
   }
 
   if (survey == null) {
@@ -53,12 +59,10 @@ export function TakeSurvey() {
       ))}
       <button
         className="w-full bg-primary text-primary-foreground md:w-3xl rounded-md border-2 text-xl p-1 cursor-pointer"
-        onClick={() => handleSubmitAnswers()}
+        onClick={() => submitAnswers()}
       >
         Submit
       </button>
-
-      <button onClick={() => console.log(answers)}>aaaa</button>
     </div>
   );
 }

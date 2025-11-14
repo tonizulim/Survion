@@ -1,3 +1,4 @@
+import type { FormEvent } from "react";
 import type { QuestionOption } from "./QuestionOption";
 
 export interface EditTextAnswerProps {

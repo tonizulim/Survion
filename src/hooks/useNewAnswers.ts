@@ -7,10 +7,12 @@ import type {
   EditRatingAnswerProps,
   EditTextAnswerProps,
 } from "../types/useNewAnswersProps";
+import { handleSubmitAnswers } from "../utils/answerUtils";
 
 export function useNewAnswers(questions: Question[]) {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [loadingAnswers, setLoadingAnswers] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (questions) {
@@ -104,16 +106,23 @@ export function useNewAnswers(questions: Question[]) {
     });
   };
 
-  const handleSubmitAnswers = () => {};
+  const submitAnswers = () => {
+    handleSubmitAnswers({
+      answers,
+      setIsSubmitted,
+      setLoading: setLoadingAnswers,
+    });
+  };
 
   return {
     answers,
     loadingAnswers,
+    isSubmitted,
     editTextAnswer,
     editRatingAnswer,
     editCheckboxAnswer,
     editRankingAnswer,
     editMultipleChoiceAnswer,
-    handleSubmitAnswers,
+    submitAnswers,
   };
 }
