@@ -21,14 +21,11 @@ export const handleFetchSurvey = async ({
 };
 
 export const handleSubmitSurvey = async ({
-  e,
   survey,
   setLoading,
   setIsSubmitted,
   setErrors,
 }: HandleSubmitSurveyProps) => {
-  e.preventDefault();
-
   setLoading(true);
 
   try {

@@ -8,7 +8,7 @@ import { useNewAnswers } from "../hooks/useNewAnswers";
 import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnwersDialog";
 
 export function TakeSurvey() {
-  const { t } = useTranslation("noPage");
+  const { t } = useTranslation("common");
   const { id } = useParams<{ id: string }>();
   const { survey, loading } = useSurveyById(Number(id));
   const {
@@ -31,7 +31,7 @@ export function TakeSurvey() {
     return <SuccessSubmittedAnswersDialog />;
   }
 
-  if (survey == null) {
+  if (survey == null || !survey.isActive) {
     return <SurveyNotFound />;
   }
 
@@ -61,7 +61,7 @@ export function TakeSurvey() {
         className="w-full bg-primary text-primary-foreground md:w-3xl rounded-md border-2 text-xl p-1 cursor-pointer"
         onClick={() => submitAnswers()}
       >
-        Submit
+        {t("buttons.submit")}
       </button>
     </div>
   );

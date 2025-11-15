@@ -1,18 +1,22 @@
 import { useState } from "react";
 import type { Survey } from "../types/Survey";
 import type {
-  addQuestionOptionsProps,
-  deleteQuestionOptionProps,
-  deleteQuestionProps,
-  editQuestionOptionsProps,
-  editQuestionProps,
-  editQuestionRatingProps,
-  editQuestionTypeProps,
-  setErrorsProps,
+  AddQuestionOptionsProps,
+  DeleteQuestionOptionProps,
+  DeleteQuestionProps,
+  EditQuestionOptionsProps,
+  EditQuestionProps,
+  EditQuestionRatingProps,
+  EditQuestionTypeProps,
+  SetErrorsProps,
+  SubmitSurveyProps,
 } from "../types/useNewUserProps";
 import type { QuestionOption } from "../types/QuestionOption";
+import { handleSubmitSurvey } from "../utils/surveyUtils";
 
 export function useNewSurvey() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const [survey, setSurvey] = useState<Survey>({
     title: "",
     description: "",
@@ -40,7 +44,7 @@ export function useNewSurvey() {
       ],
     }));
 
-  const editQuestionType = ({ position, newType }: editQuestionTypeProps) =>
+  const editQuestionType = ({ position, newType }: EditQuestionTypeProps) =>
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       updatedQuestions[position].questionTypeId = newType;
@@ -50,7 +54,7 @@ export function useNewSurvey() {
       };
     });
 
-  const editQuestion = ({ position, question }: editQuestionProps) =>
+  const editQuestion = ({ position, question }: EditQuestionProps) =>
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       updatedQuestions[position] = question;
@@ -60,7 +64,7 @@ export function useNewSurvey() {
       };
     });
 
-  const deleteQuestion = ({ position }: deleteQuestionProps) =>
+  const deleteQuestion = ({ position }: DeleteQuestionProps) =>
     setSurvey((prev) => ({
       ...prev,
       questions: prev.questions.filter((_, index) => index !== position),
@@ -69,7 +73,7 @@ export function useNewSurvey() {
   const addQuestionOption = ({
     option,
     questionPosition,
-  }: addQuestionOptionsProps) => {
+  }: AddQuestionOptionsProps) => {
     const newOption: QuestionOption = {
       key: Date.now() + Math.floor(Math.random() * 1000),
       text: option,
@@ -96,7 +100,7 @@ export function useNewSurvey() {
     option,
     optionId,
     questionPosition,
-  }: editQuestionOptionsProps) => {
+  }: EditQuestionOptionsProps) => {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const updateOptions = [
@@ -115,7 +119,7 @@ export function useNewSurvey() {
   const deleteQuestionOption = ({
     optionId,
     questionPosition,
-  }: deleteQuestionOptionProps) => {
+  }: DeleteQuestionOptionProps) => {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
       const updatedOptions = [
@@ -135,7 +139,7 @@ export function useNewSurvey() {
     questionPosition,
     minValue,
     maxValue,
-  }: editQuestionRatingProps) => {
+  }: EditQuestionRatingProps) => {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions];
 
@@ -164,7 +168,7 @@ export function useNewSurvey() {
     });
   };
 
-  const setErrors = ({ surveyValidationError }: setErrorsProps) => {
+  const setErrors = ({ surveyValidationError }: SetErrorsProps) => {
     console.log(surveyValidationError);
     const validationErrors = surveyValidationError[
       "Validation failed"
@@ -184,8 +188,19 @@ export function useNewSurvey() {
     });
   };
 
+  const submitSurvey = ({ e, setLoading }: SubmitSurveyProps) => {
+    e.preventDefault();
+    handleSubmitSurvey({
+      survey,
+      setIsSubmitted,
+      setErrors,
+      setLoading,
+    });
+  };
+
   return {
     survey,
+    isSubmitted,
     setSurvey,
     addQuestion,
     editQuestionType,
@@ -197,5 +212,6 @@ export function useNewSurvey() {
     editQuestionRating,
     removeErrors,
     setErrors,
+    submitSurvey,
   };
 }

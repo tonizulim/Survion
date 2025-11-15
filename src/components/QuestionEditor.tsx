@@ -80,7 +80,7 @@ export function QuestionEditor({
                 {t("options")}
               </label>
               <div className="space-y-2 w-full">
-                {question.QuestionOptions?.map((option) => (
+                {question.questionOptions?.map((option) => (
                   <div
                     key={option.key}
                     className="flex items-center gap-2  mt-1 w-full"
@@ -116,7 +116,7 @@ export function QuestionEditor({
                     addQuestionOption({
                       questionPosition,
                       option:
-                        t("option") + (question.QuestionOptions.length + 1),
+                        t("option") + (question.questionOptions.length + 1),
                     })
                   }
                   type="button"

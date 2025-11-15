@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Answer } from "../types/Answer";
 import type { Question } from "../types/Question";
 import type {
@@ -14,17 +14,20 @@ export function useNewAnswers(questions: Question[]) {
   const [loadingAnswers, setLoadingAnswers] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const initialized = useRef(false);
+
   useEffect(() => {
-    if (questions) {
+    if (!initialized.current && questions.length > 0) {
       setAnswers(
         questions.map((q) => ({
           text: "",
-          questionId: q.id || 0,
+          questionId: q.id ?? 0,
           answerOptions: [],
         }))
       );
-      setLoadingAnswers(false);
+      initialized.current = true;
     }
+    setLoadingAnswers(false);
   }, [questions]);
 
   const editTextAnswer = ({ text, questionPosition }: EditTextAnswerProps) => {

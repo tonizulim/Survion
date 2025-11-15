@@ -11,7 +11,8 @@
     "startCreating": "Start Creating",
     "logIn": "Log in",
     "singUp": "Sing Up",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "submit": "Submit"
   },
   "questionTypes": {
     "TextAnswer": "Text answer",

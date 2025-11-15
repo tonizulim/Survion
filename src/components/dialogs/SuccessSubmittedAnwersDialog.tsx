@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export function SuccessSubmittedAnswersDialog() {
+  const { t } = useTranslation("successSubmittedAnswersDialog");
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="sm:min-w-sm p-6 max-w-md rounded-2xl border-2 shadow-2xl m-5">
@@ -12,15 +13,13 @@ export function SuccessSubmittedAnswersDialog() {
               <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
             </div>
           </div>
-          <h1 className="text-3xl font-semibold">
-            Successfully stored all your answers
-          </h1>
+          <h1 className="text-3xl font-semibold">{t("title")}</h1>
           <p className="text-muted-foreground my-3"></p>
         </div>
 
         <Link to="/" className="flex justify-center">
           <button className="gap-2 text-lg px-3 p-2 size bg-primary text-primary-foreground rounded-md font-semibold cursor-pointer w-full">
-            Go home
+            {t("goHome")}
           </button>
         </Link>
       </div>

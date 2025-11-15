@@ -31,6 +31,9 @@ i18n
       "successRegistrationDialog",
       "createNewSurveyPage",
       "questionEditorComponent",
+      "takeRatingQuestion",
+      "successSubmittedAnswersDialog",
+      "surveyNotFound",
     ],
     defaultNS: "common",
     interpolation: {

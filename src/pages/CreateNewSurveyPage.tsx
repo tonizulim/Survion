@@ -21,6 +21,7 @@ export function CreateNewSurveyPage() {
     deleteQuestionOption,
     editQuestionRating,
     setErrors,
+    submitSurvey,
   } = useNewSurvey();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -55,11 +56,8 @@ export function CreateNewSurveyPage() {
           )}
           <form
             onSubmit={(e) =>
-              handleSubmitSurvey({
+              submitSurvey({
                 e,
-                survey,
-                setIsSubmitted,
-                setErrors,
                 setLoading,
               })
             }

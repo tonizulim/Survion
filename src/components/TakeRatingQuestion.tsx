@@ -1,5 +1,6 @@
 import { Minus, Plus } from "lucide-react";
 import type { TakeRatingQuestionProps } from "../types/TakeRatingQuestionProps";
+import { useTranslation } from "react-i18next";
 
 export function TakeRatingQuestion({
   question,
@@ -7,12 +8,15 @@ export function TakeRatingQuestion({
   index,
   editRatingAnswer,
 }: TakeRatingQuestionProps) {
+  const { t } = useTranslation("common");
   return (
     <div>
       <div className="flex justify-between px-4">
         <p>{question.minRating}</p>
         {answer?.text && (
-          <p className="font-semibold">Current: {answer.text}</p>
+          <p className="font-semibold">
+            {t("current")}: {answer.text}
+          </p>
         )}
         <p>{question.maxRating}</p>
       </div>

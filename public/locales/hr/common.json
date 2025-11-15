@@ -11,7 +11,8 @@
     "startCreating": "Registriraj se",
     "logIn": "Prijava",
     "singUp": "Registriraj se",
-    "signIn": "Registracija"
+    "signIn": "Registracija",
+    "submit": "Pošalji"
   },
   "questionTypes": {
     "TextAnswer": "Tekstualni odgovor",
