@@ -6,8 +6,11 @@ import type {
   EditRankingAnswerProps,
   EditRatingAnswerProps,
   EditTextAnswerProps,
+  SetErrorsProps,
+  SubmitAnswersProps,
 } from "../types/useNewAnswersProps";
 import { handleSubmitAnswers } from "../utils/answerUtils";
+import { QuestionType } from "../enums/QuestionType";
 
 export function useNewAnswers(questions: Question[]) {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -22,7 +25,13 @@ export function useNewAnswers(questions: Question[]) {
         questions.map((q) => ({
           text: "",
           questionId: q.id ?? 0,
+          errors: "",
           answerOptions: [],
+          required: q.isRequired,
+          requireOptions:
+            q.questionTypeId == QuestionType.Checkbox ||
+            q.questionTypeId == QuestionType.MultipleChoice ||
+            q.questionTypeId == QuestionType.Ranking,
         }))
       );
       initialized.current = true;
@@ -63,11 +72,17 @@ export function useNewAnswers(questions: Question[]) {
   }: EditCheckboxAnswerProps) => {
     setAnswers((prev) => {
       const updatedAnswers = [...prev];
-      updatedAnswers[questionPosition] = {
+      const updatedAnswer = {
         ...updatedAnswers[questionPosition],
-        answerOptions: [questionOption],
       };
 
+      updatedAnswer.answerOptions = updatedAnswer.answerOptions.some(
+        (a) => a.id == questionOption.id
+      )
+        ? []
+        : [{ ...questionOption, questionOptionId: questionOption.id || 0 }];
+
+      updatedAnswers[questionPosition] = updatedAnswer;
       return updatedAnswers;
     });
   };
@@ -81,7 +96,9 @@ export function useNewAnswers(questions: Question[]) {
       const updatedAnswers = [...prev];
       updatedAnswers[questionPosition] = {
         ...updatedAnswers[questionPosition],
-        answerOptions: [questionOption],
+        answerOptions: [
+          { ...questionOption, questionOptionId: questionOption.id || 0 },
+        ],
       };
 
       return updatedAnswers;
@@ -94,26 +111,45 @@ export function useNewAnswers(questions: Question[]) {
   }: EditCheckboxAnswerProps) => {
     setAnswers((prev) => {
       const updatedAnswers = [...prev];
-      const updatedAnswer = { ...updatedAnswers[questionPosition] };
+      const updatedAnswer = {
+        ...updatedAnswers[questionPosition],
+      };
 
-      updatedAnswer.answerOptions = updatedAnswer.answerOptions.includes(
-        questionOption
+      updatedAnswer.answerOptions = updatedAnswer.answerOptions.some(
+        (a) => a.id == questionOption.id
       )
-        ? (updatedAnswer.answerOptions = updatedAnswer.answerOptions.filter(
-            (o) => o != questionOption
-          ))
-        : [...updatedAnswer.answerOptions, questionOption];
+        ? updatedAnswer.answerOptions.filter((o) => o.id != questionOption.id)
+        : [
+            ...updatedAnswer.answerOptions,
+            { ...questionOption, questionOptionId: questionOption.id || 0 },
+          ];
 
       updatedAnswers[questionPosition] = updatedAnswer;
       return updatedAnswers;
     });
   };
 
-  const submitAnswers = () => {
+  const setErrors = ({ answerValidationError }: SetErrorsProps) => {
+    const validationErrors = answerValidationError[
+      answerValidationError.title
+    ] as Record<string, string>;
+    setAnswers((prev) => {
+      const updatedAnswers = [...prev].map((a, index) => ({
+        ...a,
+        errors: validationErrors[`answer.${index}`] || "",
+      }));
+
+      return updatedAnswers;
+    });
+  };
+
+  const submitAnswers = ({ surveyId }: SubmitAnswersProps) => {
     handleSubmitAnswers({
       answers,
+      surveyId: surveyId,
       setIsSubmitted,
       setLoading: setLoadingAnswers,
+      setErrors: setErrors,
     });
   };
 

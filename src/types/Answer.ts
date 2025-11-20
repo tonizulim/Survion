@@ -1,8 +1,11 @@
-import type { QuestionOption } from "./QuestionOption";
+import type { AnswerOption } from "./AnswerOption";
 
 export type Answer = {
   id?: number;
   text: string;
   questionId: number;
-  answerOptions: QuestionOption[];
+  answerOptions: AnswerOption[];
+  required: boolean;
+  requireOptions: boolean;
+  errors: string;
 };

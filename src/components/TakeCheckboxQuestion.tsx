@@ -17,7 +17,7 @@ export function TakeCheckboxQuestion({
           }
           className={twMerge(
             "w-full text-center bg-accent font-semibold mt-2 rounded-md cursor-pointer",
-            o == answer?.answerOptions[0] && "bg-selected"
+            answer?.answerOptions[0]?.id == o.id && "bg-selected"
           )}
         >
           {o.text}

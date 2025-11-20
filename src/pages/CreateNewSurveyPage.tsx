@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { QuestionEditor } from "../components/QuestionEditor";
 import { useNewSurvey } from "../hooks/useNewSurvey";
-import { handleSubmitSurvey } from "../utils/surveyUtils";
 import { useState } from "react";
 import { SuccessSubmittedSurveyDialog } from "../components/dialogs/SuccessSubmittedSurveyDialog";
 
@@ -11,6 +10,7 @@ export function CreateNewSurveyPage() {
   const { t } = useTranslation("createNewSurveyPage");
   const {
     survey,
+    isSubmitted,
     setSurvey,
     addQuestion,
     editQuestionType,
@@ -20,11 +20,9 @@ export function CreateNewSurveyPage() {
     editQuestionOption,
     deleteQuestionOption,
     editQuestionRating,
-    setErrors,
     submitSurvey,
   } = useNewSurvey();
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   if (isSubmitted) {

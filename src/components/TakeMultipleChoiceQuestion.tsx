@@ -20,7 +20,7 @@ export function TakeMultipleChoiceQuestion({
           }
           className={twMerge(
             "w-full text-center bg-accent font-semibold mt-2 rounded-md cursor-pointer",
-            answer?.answerOptions.includes(o) && "bg-selected"
+            answer?.answerOptions.some((a) => a.id == o.id) && "bg-selected"
           )}
         >
           {o.text}

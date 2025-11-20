@@ -5,6 +5,7 @@ import { TakeMultipleChoiceQuestion } from "./TakeMultipleChoiceQuestion";
 import { TakeRankingQuestion } from "./TakeRankingQuestion";
 import { TakeRatingQuestion } from "./TakeRatingQuestion";
 import { TakeTextQuestion } from "./TakeTextQuestion";
+import { useTranslation } from "react-i18next";
 
 export function TakeQuestion({
   question,
@@ -16,11 +17,23 @@ export function TakeQuestion({
   editRankingAnswer,
   editMultipleChoiceAnswer,
 }: TakeQuestionProps) {
+  const { t } = useTranslation("common");
+
   return (
     <div className="m-4 p-6 w-full md:w-3xl rounded-2xl border-2 shadow-lg">
-      <h1 className="text-xl font-semibold m-3">
-        {index + 1}. {question.text}
-      </h1>
+      <div className="flex flex-row justify-between text-center">
+        <h1 className="text-xl font-semibold m-3">
+          {index + 1}. {question.text}
+        </h1>
+        {question.isRequired && (
+          <p className="m-3 font-semibold">{t("common.Require")}</p>
+        )}
+      </div>
+      {answer && answer.errors && (
+        <p className="mt-1 text-destructive whitespace-pre-line">
+          {answer.errors}
+        </p>
+      )}
 
       {(() => {
         switch (question.questionTypeId) {

@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import type { ErrorObject } from "./ErrorObject";
 import type { QuestionOption } from "./QuestionOption";
 
 export interface EditTextAnswerProps {
@@ -25,4 +25,12 @@ export interface EditRankingAnswerProps {
   rank: number;
   questionOption: QuestionOption;
   questionPosition: number;
+}
+
+export interface SetErrorsProps {
+  answerValidationError: ErrorObject;
+}
+
+export interface SubmitAnswersProps {
+  surveyId: number;
 }

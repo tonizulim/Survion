@@ -20,5 +20,8 @@
     "Checkbox": "Potvrdni okvir",
     "Rating": "Ocijenjivanje",
     "PriorityScale": "Ljestvica prioriteta"
+  },
+  "common": {
+    "Require" : "Obavezno pitanje"
   }
 }

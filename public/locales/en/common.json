@@ -20,5 +20,8 @@
     "Checkbox": "Checkbox",
     "Rating": "Rating",
     "PriorityScale": "Priority scale"
+  },
+  "common": {
+    "Require" : "Required question"
   }
 }

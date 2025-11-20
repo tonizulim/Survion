@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 import { SurveyNotFound } from "../components/SurveyNotFound";
 import { TakeQuestion } from "../components/TakeQuestion";
 import { useNewAnswers } from "../hooks/useNewAnswers";
-import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnwersDialog";
+import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnswersDialog";
 
 export function TakeSurvey() {
   const { t } = useTranslation("common");
@@ -59,7 +59,10 @@ export function TakeSurvey() {
       ))}
       <button
         className="w-full bg-primary text-primary-foreground md:w-3xl rounded-md border-2 text-xl p-1 cursor-pointer"
-        onClick={() => submitAnswers()}
+        onClick={(e) => {
+          e.preventDefault();
+          submitAnswers({ surveyId: survey.id || 0 });
+        }}
       >
         {t("buttons.submit")}
       </button>
