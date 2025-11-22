@@ -40,7 +40,6 @@ export function TakeQuestion({
           case QuestionType.TextQuestion:
             return (
               <TakeTextQuestion
-                question={question}
                 answer={answer}
                 index={index}
                 editTextAnswer={editTextAnswer}

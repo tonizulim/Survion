@@ -6,3 +6,9 @@ export interface HandleFetchSurveyProps {
   setSurvey: Dispatch<SetStateAction<Survey | null>>;
   id: number;
 }
+
+export interface HandleFetchAllSurveysProps {
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setSurveys: Dispatch<SetStateAction<Survey[] | null>>;
+  userId?: number;
+}

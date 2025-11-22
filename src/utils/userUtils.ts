@@ -28,7 +28,7 @@ export const handleLogin = async ({
       });
 
       if (user.isApproved && user.isEmailVerified) {
-        navigate("/");
+        navigate("/dashboard");
       }
     } else {
       setError(res.data.detail);

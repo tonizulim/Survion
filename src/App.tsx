@@ -38,14 +38,7 @@ function App() {
               </LoginRegisterBlocker>
             }
           />
-          <Route
-            path="/user"
-            element={
-              <PrivateRoute>
-                <UserDashboardPage />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/dashboard" element={<UserDashboardPage />} />
           <Route path="/survey/new" element={<CreateNewSurveyPage />} />
           <Route path="/survey/take/:id" element={<TakeSurvey />} />
         </Routes>

@@ -22,6 +22,7 @@
     "PriorityScale": "Priority scale"
   },
   "common": {
-    "Require" : "Required question"
+    "Require" : "Required question",
+    "TextAnswerPlaceholder" : "Enter Your answer"
   }
 }

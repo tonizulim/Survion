@@ -22,6 +22,7 @@
     "PriorityScale": "Ljestvica prioriteta"
   },
   "common": {
-    "Require" : "Obavezno pitanje"
+    "Require" : "Obavezno pitanje",
+    "TextAnswerPlaceholder" : "Unesi svoj odgovor"
   }
 }
