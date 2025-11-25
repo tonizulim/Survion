@@ -1,3 +1,5 @@
+import type { DeactivateSurveyProps } from "../types/DeactivateSurveyProps";
+import type { DeleteSurveyProps } from "../types/DeleteSurveyProps";
 import type {
   getAllUserSurveysProps,
   GetSurveyByIdProps,
@@ -29,6 +31,26 @@ export const getAllUserSurveys = async ({ userId }: getAllUserSurveysProps) => {
 export const postSurvey = async ({ survey }: SubmitSurveyProps) => {
   try {
     const response = await apiClient.post("/survey", survey);
+
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const deactivateSurvey = async ({ surveyId }: DeactivateSurveyProps) => {
+  try {
+    const response = await apiClient.get(`/survey/deactivate/${surveyId}`);
+
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const deleteSurvey = async ({ surveyId }: DeleteSurveyProps) => {
+  try {
+    const response = await apiClient.delete(`/survey/${surveyId}`);
 
     return response;
   } catch (error: any) {

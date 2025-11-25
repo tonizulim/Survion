@@ -5,8 +5,12 @@ import SurveyCardDropdown from "./ui/SurveyCardDropdown";
 import type { SurveyCardProps } from "../types/SurveyCardProps";
 import { Link } from "react-router-dom";
 
-export function SurveyCard({ survey }: SurveyCardProps) {
-  const { t } = useTranslation("common");
+export function SurveyCard({
+  survey,
+  setSurveyToDelete,
+  deactivate,
+}: SurveyCardProps) {
+  const { t } = useTranslation("surveyCard");
 
   return (
     <div className="p-6 w-full rounded-2xl border-2 shadow-lg gap-2">
@@ -15,28 +19,32 @@ export function SurveyCard({ survey }: SurveyCardProps) {
           <h1 className="font-bold text-lg">{survey.title}</h1>
           <p className="text-muted-foreground text-lg">{survey.description}</p>
         </div>
-        <SurveyCardDropdown surveyId={survey.id || 0} />
+        <SurveyCardDropdown
+          surveyId={survey.id || 0}
+          setSurveyToDelete={setSurveyToDelete}
+          deactivate={deactivate}
+        />
       </div>
 
       <div className="flex justify-between text-muted-foreground">
-        <p>Active:</p>
+        <p>{t("active")}:</p>
         <button
           className={twMerge(
             "text-sm p-1 bg-secondary text-secondary-foreground rounded-lg font-semibold flex items-center",
             survey.isActive && "bg-primary text-primary-foreground "
           )}
         >
-          {survey.isActive ? "active" : "disabled"}
+          {survey.isActive ? t("actives.active") : t("actives.disabled")}
         </button>
       </div>
       <button className="flex flex-row justify-center mt-2 text-md px-4 hover:bg-secondary text-secondary-foreground rounded-lg border-secondary border-2 p-2 font-semibold cursor-pointer gap-2 w-full">
         <Share2 />
-        share
+        {t("share")}
       </button>
       <Link to={`/survey/results/${survey.id}`}>
         <button className="flex flex-row justify-center mt-2 text-md px-4 hover:bg-secondary text-secondary-foreground rounded-lg border-secondary border-2 p-2 font-semibold cursor-pointer gap-2 w-full">
           <BarChart3 />
-          view results
+          {t("results")}
         </button>
       </Link>
     </div>

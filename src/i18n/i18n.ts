@@ -34,6 +34,9 @@ i18n
       "takeRatingQuestion",
       "successSubmittedAnswersDialog",
       "surveyNotFound",
+      "userDashboardPage",
+      "surveyCard",
+      "deleteSurveyDialog",
     ],
     defaultNS: "common",
     interpolation: {

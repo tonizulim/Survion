@@ -1,0 +1,15 @@
+{
+    "active":"Aktivna",
+    "share":"pošalji",
+    "results":"Rezultati",
+    "actives":{
+        "active":"aktivna",
+        "disabled":"onemogućena"
+    },
+    "surveyCardDropdown":{
+        "edit":"Uresi",
+        "results":"Rezultati",
+        "disable": "Ugasi",
+        "delete": "Izbriši"
+    }
+}

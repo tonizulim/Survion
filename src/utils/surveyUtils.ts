@@ -1,8 +1,12 @@
 import {
+  deactivateSurvey,
+  deleteSurvey,
   getAllUserSurveys,
   getSurveyById,
   postSurvey,
 } from "../services/surveyService";
+import type { HandleDeactivateSurveyProps } from "../types/handleDeactivateSurveyProps";
+import type { HandleDeleteSurveyProps } from "../types/HandleDeleteSurveyProps";
 import type {
   HandleFetchAllSurveysProps,
   HandleFetchSurveyProps,
@@ -66,4 +70,46 @@ export const handleSubmitSurvey = async ({
   }
 
   setLoading(false);
+};
+
+export const handleDeactivateSurvey = async ({
+  surveyId,
+  setLoading,
+}: HandleDeactivateSurveyProps) => {
+  var status = false;
+  setLoading(true);
+
+  try {
+    const res = await deactivateSurvey({ surveyId });
+
+    if (res.status === 200) {
+      status = true;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  setLoading(false);
+  return status;
+};
+
+export const handleDeleteSurvey = async ({
+  surveyId,
+  setLoading,
+}: HandleDeleteSurveyProps) => {
+  var status = false;
+  setLoading(true);
+
+  try {
+    const res = await deleteSurvey({ surveyId });
+
+    if (res.status === 200) {
+      status = true;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  setLoading(false);
+  return status;
 };

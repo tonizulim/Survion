@@ -1,0 +1,15 @@
+{
+    "active":"Active",
+    "share":"share",
+    "results":"view results",
+    "actives":{
+        "active":"active",
+        "disabled":"disabled"
+    },
+    "surveyCardDropdown":{
+        "edit":"Edit",
+        "results":"View results",
+        "disable": "Disable",
+        "delete": "Delete"
+    }
+}
