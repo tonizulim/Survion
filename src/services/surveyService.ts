@@ -3,6 +3,7 @@ import type { DeleteSurveyProps } from "../types/DeleteSurveyProps";
 import type {
   getAllUserSurveysProps,
   GetSurveyByIdProps,
+  getSurveyResultsProps,
 } from "../types/GetSurveyByIdProps";
 import type { SubmitSurveyProps } from "../types/SubmitSurveyProps";
 import { apiClient } from "./apiClient";
@@ -21,6 +22,16 @@ export const getAllUserSurveys = async ({ userId }: getAllUserSurveysProps) => {
   try {
     const url = userId ? `/survey/user/${userId}` : "/survey/user";
     const response = await apiClient.get(url);
+
+    return response;
+  } catch (error: any) {
+    return error.response;
+  }
+};
+
+export const getSurveyResults = async ({ surveyId }: getSurveyResultsProps) => {
+  try {
+    const response = await apiClient.get(`/survey/${surveyId}/results`);
 
     return response;
   } catch (error: any) {

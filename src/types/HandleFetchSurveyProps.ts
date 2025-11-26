@@ -12,3 +12,9 @@ export interface HandleFetchAllSurveysProps {
   setSurveys: Dispatch<SetStateAction<Survey[] | null>>;
   userId?: number;
 }
+
+export interface HandleFetchSurveyResultsProps {
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setSurvey: Dispatch<SetStateAction<Survey | null>>;
+  surveyId: number;
+}

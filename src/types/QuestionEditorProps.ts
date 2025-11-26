@@ -1,36 +1,36 @@
 import type { Question } from "./Question";
 import type {
-  addQuestionOptionsProps,
-  deleteQuestionOptionProps,
-  deleteQuestionProps,
-  editQuestionOptionsProps,
-  editQuestionProps,
-  editQuestionRatingProps,
-  editQuestionTypeProps,
+  AddQuestionOptionsProps,
+  DeleteQuestionOptionProps,
+  DeleteQuestionProps,
+  EditQuestionOptionsProps,
+  EditQuestionProps,
+  EditQuestionRatingProps,
+  EditQuestionTypeProps,
 } from "./useNewUserProps";
 
 export interface QuestionEditorProps {
   question: Question;
   questionPosition: number;
-  editQuestionType: ({ position, newType }: editQuestionTypeProps) => void;
-  editQuestion: ({ position, question }: editQuestionProps) => void;
-  deleteQuestion: ({ position }: deleteQuestionProps) => void;
+  editQuestionType: ({ position, newType }: EditQuestionTypeProps) => void;
+  editQuestion: ({ position, question }: EditQuestionProps) => void;
+  deleteQuestion: ({ position }: DeleteQuestionProps) => void;
   addQuestionOption: ({
     questionPosition,
     option,
-  }: addQuestionOptionsProps) => void;
+  }: AddQuestionOptionsProps) => void;
   editQuestionOption: ({
     questionPosition,
     optionId,
     option,
-  }: editQuestionOptionsProps) => void;
+  }: EditQuestionOptionsProps) => void;
   deleteQuestionOption: ({
     optionId,
     questionPosition,
-  }: deleteQuestionOptionProps) => void;
+  }: DeleteQuestionOptionProps) => void;
   editQuestionRating: ({
     questionPosition,
     minValue,
     maxValue,
-  }: editQuestionRatingProps) => void;
+  }: EditQuestionRatingProps) => void;
 }

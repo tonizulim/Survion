@@ -3,13 +3,15 @@ import {
   deleteSurvey,
   getAllUserSurveys,
   getSurveyById,
+  getSurveyResults,
   postSurvey,
 } from "../services/surveyService";
-import type { HandleDeactivateSurveyProps } from "../types/handleDeactivateSurveyProps";
+import type { HandleDeactivateSurveyProps } from "../types/HandleDeactivateSurveyProps";
 import type { HandleDeleteSurveyProps } from "../types/HandleDeleteSurveyProps";
 import type {
   HandleFetchAllSurveysProps,
   HandleFetchSurveyProps,
+  HandleFetchSurveyResultsProps,
 } from "../types/HandleFetchSurveyProps";
 import type { HandleSubmitSurveyProps } from "../types/HandleSubmitSurveyProps";
 
@@ -42,6 +44,24 @@ export const handleFetchAllSurveys = async ({
     const res = await getAllUserSurveys({ userId });
     if (res.status === 200) {
       setSurveys(res.data);
+    }
+  } catch (error) {
+    console.error("Failed to load surveys", error);
+  }
+  setLoading(false);
+};
+
+export const handleFetchSurveyResults = async ({
+  setLoading,
+  setSurvey,
+  surveyId,
+}: HandleFetchSurveyResultsProps) => {
+  setLoading(true);
+
+  try {
+    const res = await getSurveyResults({ surveyId });
+    if (res.status === 200) {
+      setSurvey(res.data);
     }
   } catch (error) {
     console.error("Failed to load surveys", error);

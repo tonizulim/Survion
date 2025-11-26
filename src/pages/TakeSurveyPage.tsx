@@ -7,7 +7,7 @@ import { TakeQuestion } from "../components/TakeQuestion";
 import { useNewAnswers } from "../hooks/useNewAnswers";
 import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnswersDialog";
 
-export function TakeSurvey() {
+export function TakeSurveyPage() {
   const { t } = useTranslation("common");
   const { id } = useParams<{ id: string }>();
   const { survey, loading } = useSurveyById(Number(id));

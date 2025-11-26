@@ -5,3 +5,7 @@ export interface GetSurveyByIdProps {
 export interface getAllUserSurveysProps {
   userId?: number;
 }
+
+export interface getSurveyResultsProps {
+  surveyId: number;
+}

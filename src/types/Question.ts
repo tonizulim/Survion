@@ -10,4 +10,7 @@ export type Question = {
   maxRating?: number;
   errors: string;
   questionOptions: QuestionOption[];
+  answers?: string[];
+  rating?: number;
+  responses?: number;
 };

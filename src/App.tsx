@@ -9,10 +9,10 @@ import { LogInPage } from "./pages/LogInPage.js";
 import { RegisterPage } from "./pages/RegisterPage.js";
 import { UserProvider } from "./contexts/UserContext.js";
 import { UserDashboardPage } from "./pages/UserDashboardPage.js";
-import { PrivateRoute } from "./components/PrivateRoute.js";
 import { LoginRegisterBlocker } from "./components/LoginRegisterBlocker.js";
 import { CreateNewSurveyPage } from "./pages/CreateNewSurveyPage.js";
-import { TakeSurvey } from "./pages/TakeSurvey.js";
+import { TakeSurveyPage } from "./pages/TakeSurveyPage.js";
+import { ResultPage } from "./pages/ResultPage.js";
 
 function App() {
   return (
@@ -40,7 +40,8 @@ function App() {
           />
           <Route path="/dashboard" element={<UserDashboardPage />} />
           <Route path="/survey/new" element={<CreateNewSurveyPage />} />
-          <Route path="/survey/take/:id" element={<TakeSurvey />} />
+          <Route path="/survey/take/:id" element={<TakeSurveyPage />} />
+          <Route path="/survey/result/:id" element={<ResultPage />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>
