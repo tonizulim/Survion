@@ -1,9 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import Loading from "../components/Loading";
-import { useSurveyResults } from "../hooks/useSurveyResults";
-import { SurveyNotFound } from "../components/SurveyNotFound";
-import { QuestionResult } from "../components/QuestionResult";
+import { useSurveyResults } from "../hooks";
+import { QuestionResult, SurveyNotFound, Loading } from "../components/";
 
 export function ResultPage() {
   const { t } = useTranslation("userDashboardPage");

@@ -1,7 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import type { SuccessSubmittedSurveyDialogProps } from "../../types/SuccessSubmittedSurveyDialogProps";
+import type { SuccessSubmittedSurveyDialogProps } from "../../types";
 
 export function SuccessSubmittedSurveyDialog({
   title,

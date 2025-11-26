@@ -1,6 +1,6 @@
 import { CircleX } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import type { DeleteSurveyDialogProps } from "../../types/DeleteSurveyDialogProps";
+import type { DeleteSurveyDialogProps } from "../../types";
 
 export function DeleteSurveyDialog({
   deleteSurvey,

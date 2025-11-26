@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Survey } from "../types/Survey";
-import { handleFetchSurveyResults } from "../utils/surveyUtils";
+import type { Survey } from "../types";
+import { handleFetchSurveyResults } from "../utils";
 
 export function useSurveyResults(surveyId: number) {
   const [loading, setLoading] = useState(true);

@@ -1,6 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { Survey } from "./Survey";
-import type { DeactivateProps } from "./useAllSurveysProps";
+import type { DeactivateProps, Survey } from ".";
 
 export interface SurveyCardProps {
   survey: Survey;

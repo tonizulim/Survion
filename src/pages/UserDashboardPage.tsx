@@ -1,10 +1,8 @@
 import { BarChart3, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useAllSurveys } from "../hooks/useAllSurveys";
-import Loading from "../components/Loading";
-import { SurveyCard } from "../components/SurveyCard";
-import { DeleteSurveyDialog } from "../components/dialogs/DeleteSurveyDialog";
+import { useAllSurveys } from "../hooks/";
+import { SurveyCard, DeleteSurveyDialog, Loading } from "../components";
 
 export function UserDashboardPage() {
   const { t } = useTranslation("userDashboardPage");

@@ -1,4 +1,4 @@
-import type { LoginProps, RegisterProps } from "../types/userUtilsProps";
+import type { LoginProps, RegisterProps } from "../types";
 import { apiClient } from "./apiClient";
 
 export const login = async ({ credentials }: LoginProps) => {

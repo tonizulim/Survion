@@ -1,6 +1,5 @@
-import type { HandleLoginProps } from "../types/HandleLoginProps";
-import { login, register } from "../services/userService";
-import type { HandleRegisterProps } from "../types/HandleRegisterProps";
+import { login, register } from "../services";
+import type { HandleRegisterProps, HandleLoginProps } from "../types";
 
 export const handleLogin = async ({
   e,

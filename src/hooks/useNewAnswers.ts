@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import type { Answer } from "../types/Answer";
-import type { Question } from "../types/Question";
 import type {
+  Question,
+  Answer,
   EditCheckboxAnswerProps,
   EditRankingAnswerProps,
   EditRatingAnswerProps,
   EditTextAnswerProps,
-  SetErrorsProps,
+  SetAnswerErrorsProps,
   SubmitAnswersProps,
-} from "../types/useNewAnswersProps";
-import { handleSubmitAnswers } from "../utils/answerUtils";
-import { QuestionType } from "../enums/QuestionType";
+} from "../types";
+import { handleSubmitAnswers } from "../utils";
+import { QuestionType } from "../enums";
+import { MULTIPLE_OPTION_QUESTION_TYPES } from "../constants";
 
 export function useNewAnswers(questions: Question[]) {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -28,10 +29,9 @@ export function useNewAnswers(questions: Question[]) {
           errors: "",
           answerOptions: [],
           required: q.isRequired,
-          requireOptions:
-            q.questionTypeId == QuestionType.Checkbox ||
-            q.questionTypeId == QuestionType.MultipleChoice ||
-            q.questionTypeId == QuestionType.Ranking,
+          requireOptions: MULTIPLE_OPTION_QUESTION_TYPES.includes(
+            q.questionTypeId
+          ),
         }))
       );
       initialized.current = true;
@@ -129,7 +129,7 @@ export function useNewAnswers(questions: Question[]) {
     });
   };
 
-  const setErrors = ({ answerValidationError }: SetErrorsProps) => {
+  const setErrors = ({ answerValidationError }: SetAnswerErrorsProps) => {
     const validationErrors = answerValidationError[
       answerValidationError.title
     ] as Record<string, string>;

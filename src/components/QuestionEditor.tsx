@@ -1,7 +1,8 @@
 import { Trash2, Plus } from "lucide-react";
-import type { QuestionEditorProps } from "../types/QuestionEditorProps";
-import { QuestionType } from "../enums/QuestionType";
+import type { QuestionEditorProps } from "../types";
+import { QuestionType } from "../enums";
 import { useTranslation } from "react-i18next";
+import { MULTIPLE_OPTION_QUESTION_TYPES } from "../constants";
 
 export function QuestionEditor({
   question,
@@ -72,9 +73,7 @@ export function QuestionEditor({
           />
         </div>
         <div className=" pt-3">
-          {(question.questionTypeId === QuestionType.MultipleChoice ||
-            question.questionTypeId === QuestionType.Checkbox ||
-            question.questionTypeId === QuestionType.Ranking) && (
+          {MULTIPLE_OPTION_QUESTION_TYPES.includes(question.questionTypeId) && (
             <div className="space-y-2">
               <label htmlFor="Options" className="font-semibold">
                 {t("options")}

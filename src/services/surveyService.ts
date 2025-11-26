@@ -1,11 +1,11 @@
-import type { DeactivateSurveyProps } from "../types/DeactivateSurveyProps";
-import type { DeleteSurveyProps } from "../types/DeleteSurveyProps";
 import type {
-  getAllUserSurveysProps,
+  GetAllUserSurveysProps,
   GetSurveyByIdProps,
-  getSurveyResultsProps,
-} from "../types/GetSurveyByIdProps";
-import type { SubmitSurveyProps } from "../types/SubmitSurveyProps";
+  GetSurveyResultsProps,
+  DeleteSurveyProps,
+  DeactivateSurveyProps,
+  PostSurveyProps,
+} from "../types";
 import { apiClient } from "./apiClient";
 
 export const getSurveyById = async ({ id }: GetSurveyByIdProps) => {
@@ -18,7 +18,7 @@ export const getSurveyById = async ({ id }: GetSurveyByIdProps) => {
   }
 };
 
-export const getAllUserSurveys = async ({ userId }: getAllUserSurveysProps) => {
+export const getAllUserSurveys = async ({ userId }: GetAllUserSurveysProps) => {
   try {
     const url = userId ? `/survey/user/${userId}` : "/survey/user";
     const response = await apiClient.get(url);
@@ -29,7 +29,7 @@ export const getAllUserSurveys = async ({ userId }: getAllUserSurveysProps) => {
   }
 };
 
-export const getSurveyResults = async ({ surveyId }: getSurveyResultsProps) => {
+export const getSurveyResults = async ({ surveyId }: GetSurveyResultsProps) => {
   try {
     const response = await apiClient.get(`/survey/${surveyId}/results`);
 
@@ -39,7 +39,7 @@ export const getSurveyResults = async ({ surveyId }: getSurveyResultsProps) => {
   }
 };
 
-export const postSurvey = async ({ survey }: SubmitSurveyProps) => {
+export const postSurvey = async ({ survey }: PostSurveyProps) => {
   try {
     const response = await apiClient.post("/survey", survey);
 

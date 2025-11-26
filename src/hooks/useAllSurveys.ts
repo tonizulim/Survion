@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Survey } from "../types/Survey";
 import {
   handleDeactivateSurvey,
   handleDeleteSurvey,
   handleFetchAllSurveys,
-} from "../utils/surveyUtils";
-import type { DeactivateProps } from "../types/useAllSurveysProps";
+} from "../utils";
+import type { DeactivateProps, Survey } from "../types";
 
 export function useAllSurveys(userId?: number) {
   const [surveys, setSurveys] = useState<Survey[] | null>(null);

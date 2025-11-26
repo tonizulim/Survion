@@ -2,11 +2,10 @@ import { BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import type { Credentials } from "../types/credentials";
-import { handleLogin } from "../utils/userUtils";
-import { SuccessRegistrationDialog } from "../components/dialogs/SuccessRegistrationDialog";
-import Loading from "../components/Loading";
-import { useUserContext } from "../contexts/UserContext";
+import type { Credentials } from "../types";
+import { handleLogin } from "../utils";
+import { SuccessRegistrationDialog, Loading } from "../components";
+import { useUserContext } from "../contexts";
 
 export function LogInPage() {
   const { t } = useTranslation("logInPage");

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Survey } from "../types/Survey";
-import { handleFetchSurvey } from "../utils/surveyUtils";
+import type { Survey } from "../types";
+import { handleFetchSurvey } from "../utils";
 
 export function useSurveyById(id: number) {
   const [survey, setSurvey] = useState<Survey | null>(null);

@@ -5,15 +5,15 @@ import {
   getSurveyById,
   getSurveyResults,
   postSurvey,
-} from "../services/surveyService";
-import type { HandleDeactivateSurveyProps } from "../types/HandleDeactivateSurveyProps";
-import type { HandleDeleteSurveyProps } from "../types/HandleDeleteSurveyProps";
+} from "../services";
 import type {
+  HandleDeactivateSurveyProps,
   HandleFetchAllSurveysProps,
   HandleFetchSurveyProps,
   HandleFetchSurveyResultsProps,
-} from "../types/HandleFetchSurveyProps";
-import type { HandleSubmitSurveyProps } from "../types/HandleSubmitSurveyProps";
+  HandleSubmitSurveyProps,
+  HandleDeleteSurveyProps,
+} from "../types";
 
 export const handleFetchSurvey = async ({
   setSurvey,

@@ -2,17 +2,18 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./i18n/i18n.js";
-import { HomePage } from "./pages/HomePage";
-import { NoPage } from "./pages/NoPage";
-import { NavBar } from "./components/NavBar.js";
-import { LogInPage } from "./pages/LogInPage.js";
-import { RegisterPage } from "./pages/RegisterPage.js";
-import { UserProvider } from "./contexts/UserContext.js";
-import { UserDashboardPage } from "./pages/UserDashboardPage.js";
-import { LoginRegisterBlocker } from "./components/LoginRegisterBlocker.js";
-import { CreateNewSurveyPage } from "./pages/CreateNewSurveyPage.js";
-import { TakeSurveyPage } from "./pages/TakeSurveyPage.js";
-import { ResultPage } from "./pages/ResultPage.js";
+import { UserProvider } from "./contexts";
+import { LoginRegisterBlocker, NavBar } from "./components";
+import {
+  HomePage,
+  NoPage,
+  LogInPage,
+  RegisterPage,
+  UserDashboardPage,
+  NewSurveyPage,
+  TakeSurveyPage,
+  ResultPage,
+} from "./pages";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             }
           />
           <Route path="/dashboard" element={<UserDashboardPage />} />
-          <Route path="/survey/new" element={<CreateNewSurveyPage />} />
+          <Route path="/survey/new" element={<NewSurveyPage />} />
           <Route path="/survey/take/:id" element={<TakeSurveyPage />} />
           <Route path="/survey/result/:id" element={<ResultPage />} />
         </Routes>

@@ -1,4 +1,3 @@
-import type { Question } from "./Question";
 import type {
   AddQuestionOptionsProps,
   DeleteQuestionOptionProps,
@@ -7,7 +6,8 @@ import type {
   EditQuestionProps,
   EditQuestionRatingProps,
   EditQuestionTypeProps,
-} from "./useNewUserProps";
+  Question,
+} from ".";
 
 export interface QuestionEditorProps {
   question: Question;

@@ -1,6 +1,6 @@
 import { BarChart3, CheckCircle2, Clock, Shield } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import type { Feature } from "../types/Feature";
+import type { Feature } from "../types";
 import { Link } from "react-router-dom";
 
 export function HomePage() {

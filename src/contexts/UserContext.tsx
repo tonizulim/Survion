@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import type { User } from "../types/User";
-import type { UserContextType } from "../types/UserContextType";
+import type { User } from "../types";
+import type { UserContextType } from "../types";
 
 const UserContext = createContext<UserContextType | null>(null);
 

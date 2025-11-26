@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { Survey } from "../types/Survey";
+
+import { handleSubmitSurvey } from "../utils";
 import type {
   AddQuestionOptionsProps,
   DeleteQuestionOptionProps,
@@ -8,11 +9,11 @@ import type {
   EditQuestionProps,
   EditQuestionRatingProps,
   EditQuestionTypeProps,
-  SetErrorsProps,
+  QuestionOption,
+  SetSurveyErrorsProps,
   SubmitSurveyProps,
-} from "../types/useNewUserProps";
-import type { QuestionOption } from "../types/QuestionOption";
-import { handleSubmitSurvey } from "../utils/surveyUtils";
+  Survey,
+} from "../types";
 
 export function useNewSurvey() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -168,7 +169,7 @@ export function useNewSurvey() {
     });
   };
 
-  const setErrors = ({ surveyValidationError }: SetErrorsProps) => {
+  const setErrors = ({ surveyValidationError }: SetSurveyErrorsProps) => {
     console.log(surveyValidationError);
     const validationErrors = surveyValidationError[
       "Validation failed"
@@ -176,7 +177,6 @@ export function useNewSurvey() {
     setSurvey((prev) => {
       const updatedQuestions = [...prev.questions].map((q, index) => ({
         ...q,
-        //errors: surveyValidationError[surveyValidationError.title][`questions.${index}`] || "",
         errors: validationErrors[`questions.${index}`],
       }));
 

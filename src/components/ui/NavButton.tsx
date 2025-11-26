@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { NavButtonProps } from "../../types/navButtonProps";
+import type { NavButtonProps } from "../../types";
 import { twMerge } from "tailwind-merge";
 
 export function NavButton({ href, label, selected }: NavButtonProps) {

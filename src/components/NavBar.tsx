@@ -1,10 +1,9 @@
 import { BarChart3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
-import { NavButton } from "./ui/NavButton";
-import LanguageDropdown from "./ui/LanguageDropdown";
-import MobileDropdown from "./ui/MobileDropdown";
-import { useUserContext } from "../contexts/UserContext";
+import { LanguageDropdown, MobileDropdown } from ".";
+import { useUserContext } from "../contexts";
+import { NavButton } from ".";
 
 export function NavBar() {
   const { pathname } = useLocation();

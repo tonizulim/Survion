@@ -1,5 +1,5 @@
-import { postAnswers } from "../services/answerService";
-import type { HandleSubmitAnswersProps } from "../types/HandleSubmitAnswersProps";
+import { postAnswers } from "../services";
+import type { HandleSubmitAnswersProps } from "../types";
 
 export const handleSubmitAnswers = async ({
   answers,

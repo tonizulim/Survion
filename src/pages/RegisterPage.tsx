@@ -2,10 +2,9 @@ import { BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import type { RegisterCredentials } from "../types/credentials";
-import { handleRegister } from "../utils/userUtils";
-import { SuccessRegistrationDialog } from "../components/dialogs/SuccessRegistrationDialog";
-import Loading from "../components/Loading";
+import type { RegisterCredentials } from "../types";
+import { handleRegister } from "../utils";
+import { Loading, SuccessRegistrationDialog } from "../components";
 
 export function RegisterPage() {
   const { t } = useTranslation("registerPage");

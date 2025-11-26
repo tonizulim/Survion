@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import type { SuccessRegistrationDialogProps } from "../../types/SuccessRegistrationDialogProps";
+import type { SuccessRegistrationDialogProps } from "../../types";
 import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";

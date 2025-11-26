@@ -1,8 +1,8 @@
 import { BarChart3, Share2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
-import SurveyCardDropdown from "./ui/SurveyCardDropdown";
-import type { SurveyCardProps } from "../types/SurveyCardProps";
+import { SurveyCardDropdown } from ".";
+import type { SurveyCardProps } from "../types";
 import { Link } from "react-router-dom";
 
 export function SurveyCard({

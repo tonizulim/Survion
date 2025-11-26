@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { useSurveyById } from "../hooks/useSurvey";
 import { useParams } from "react-router-dom";
-import Loading from "../components/Loading";
-import { SurveyNotFound } from "../components/SurveyNotFound";
-import { TakeQuestion } from "../components/TakeQuestion";
-import { useNewAnswers } from "../hooks/useNewAnswers";
-import { SuccessSubmittedAnswersDialog } from "../components/dialogs/SuccessSubmittedAnswersDialog";
+import {
+  TakeQuestion,
+  SurveyNotFound,
+  SuccessSubmittedAnswersDialog,
+  Loading,
+} from "../components/";
+import { useNewAnswers, useSurveyById } from "../hooks/";
 
 export function TakeSurveyPage() {
   const { t } = useTranslation("common");

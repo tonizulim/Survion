@@ -1,4 +1,4 @@
-import type { SubmitAnswerProps } from "../types/SubmitAnswerProps";
+import type { SubmitAnswerProps } from "../types";
 import { apiClient } from "./apiClient";
 
 export const postAnswers = async ({ answers, surveyId }: SubmitAnswerProps) => {
