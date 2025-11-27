@@ -9,6 +9,7 @@ export function SurveyCard({
   survey,
   setSurveyToDelete,
   deactivate,
+  setShareSurveyId,
 }: SurveyCardProps) {
   const { t } = useTranslation("surveyCard");
 
@@ -37,10 +38,20 @@ export function SurveyCard({
           {survey.isActive ? t("actives.active") : t("actives.disabled")}
         </button>
       </div>
-      <button className="flex flex-row justify-center mt-2 text-md px-4 hover:bg-secondary text-secondary-foreground rounded-lg border-secondary border-2 p-2 font-semibold cursor-pointer gap-2 w-full">
+
+      <button
+        disabled={!survey.isActive}
+        onClick={() => setShareSurveyId(survey.id || 0)}
+        className={twMerge(
+          "flex flex-row justify-center mt-2 text-md px-4 hover:bg-secondary text-secondary-foreground rounded-lg border-secondary border-2 p-2 font-semibold cursor-pointer gap-2 w-full",
+          !survey.isActive &&
+            "text-muted-foreground hover:bg-transparent cursor-default"
+        )}
+      >
         <Share2 />
         {t("share")}
       </button>
+
       <Link to={`/survey/results/${survey.id}`}>
         <button className="flex flex-row justify-center mt-2 text-md px-4 hover:bg-secondary text-secondary-foreground rounded-lg border-secondary border-2 p-2 font-semibold cursor-pointer gap-2 w-full">
           <BarChart3 />

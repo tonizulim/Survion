@@ -193,6 +193,7 @@ export function useNewSurvey() {
     console.log(survey);
     handleSubmitSurvey({
       survey,
+      setSurvey,
       setIsSubmitted,
       setErrors,
       setLoading,

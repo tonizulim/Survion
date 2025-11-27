@@ -33,5 +33,6 @@ export interface HandleSubmitSurveyProps {
   survey: Survey;
   setIsSubmitted: Dispatch<SetStateAction<boolean>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  setSurvey: Dispatch<SetStateAction<Survey>>;
   setErrors: ({ surveyValidationError }: SetSurveyErrorsProps) => void;
 }

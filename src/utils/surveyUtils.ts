@@ -74,6 +74,7 @@ export const handleSubmitSurvey = async ({
   setLoading,
   setIsSubmitted,
   setErrors,
+  setSurvey,
 }: HandleSubmitSurveyProps) => {
   setLoading(true);
 
@@ -82,6 +83,8 @@ export const handleSubmitSurvey = async ({
 
     if (res.status === 200) {
       setIsSubmitted(true);
+      const id = res.data.match(/Id:\s*(\d+)/)?.[1];
+      if (id) setSurvey((prev) => ({ ...prev, id: id }));
     } else {
       setErrors({ surveyValidationError: res.data });
     }

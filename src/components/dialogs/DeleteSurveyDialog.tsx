@@ -18,7 +18,6 @@ export function DeleteSurveyDialog({
             </div>
           </div>
           <h1 className="text-3xl font-semibold">{t("title")}</h1>
-          <p className="text-muted-foreground my-3"></p>
         </div>
 
         <button

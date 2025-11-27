@@ -25,7 +25,12 @@ export function NewSurveyPage() {
   const [loading, setLoading] = useState(false);
 
   if (isSubmitted) {
-    return <SuccessSubmittedSurveyDialog title={survey.title || "null"} />;
+    return (
+      <SuccessSubmittedSurveyDialog
+        title={survey.title || "null"}
+        surveyId={survey.id || 0}
+      />
+    );
   }
 
   return (
@@ -95,7 +100,8 @@ export function NewSurveyPage() {
               />
             </div>
 
-            <div className="space-y-2">
+            {/* survey that can have timelimit currently disabled*/}
+            {/* <div className="space-y-2">
               <div className="flex items-center gap-2 mt-3">
                 <input
                   id="timeLimit"
@@ -133,7 +139,7 @@ export function NewSurveyPage() {
                   />
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div className="space-y-4 mt-3">
               <div className="flex items-center justify-between">

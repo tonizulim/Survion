@@ -2,11 +2,24 @@ import { CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { SuccessSubmittedSurveyDialogProps } from "../../types";
+import { useState } from "react";
+import { ShareSurveyDialog } from "./ShareSurveyDialog";
 
 export function SuccessSubmittedSurveyDialog({
   title,
+  surveyId,
 }: SuccessSubmittedSurveyDialogProps) {
   const { t } = useTranslation("successSubmittedSurveyDialog");
+  const [shareSurveyId, setShareSurveyId] = useState(-1);
+
+  if (shareSurveyId > 0) {
+    return (
+      <ShareSurveyDialog
+        shareSurveyId={shareSurveyId}
+        setShareSurveyId={setShareSurveyId}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -23,13 +36,16 @@ export function SuccessSubmittedSurveyDialog({
           <p className="text-muted-foreground my-3"></p>
         </div>
 
-        <Link to="/user" className="flex justify-center">
+        <Link to="/dashboard" className="flex justify-center">
           <button className="gap-2 text-lg px-3 p-2 size bg-primary text-primary-foreground rounded-md font-semibold cursor-pointer w-full">
             {t("goToDashboard")}
           </button>
         </Link>
 
-        <button className="mt-3 text-lg px-3 p-2 size bg-secondary text-secondary-foreground rounded-md font-semibold cursor-pointer w-full">
+        <button
+          onClick={() => setShareSurveyId(surveyId)}
+          className="mt-3 text-lg px-3 p-2 size bg-secondary text-secondary-foreground rounded-md font-semibold cursor-pointer w-full"
+        >
           {t("shareSurvey")}
         </button>
       </div>

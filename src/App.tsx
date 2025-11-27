@@ -42,7 +42,7 @@ function App() {
           <Route path="/dashboard" element={<UserDashboardPage />} />
           <Route path="/survey/new" element={<NewSurveyPage />} />
           <Route path="/survey/take/:id" element={<TakeSurveyPage />} />
-          <Route path="/survey/result/:id" element={<ResultPage />} />
+          <Route path="/survey/results/:id" element={<ResultPage />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>

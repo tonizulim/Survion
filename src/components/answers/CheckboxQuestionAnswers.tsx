@@ -7,7 +7,7 @@ export function CheckboxQuestionAnswers({
   return (
     <>
       {count == 0 && (
-        <div className="m-4 p-6 w-full md:w-3xl rounded-2xl border-2 shadow-lg">
+        <div className="m-4 p-6  rounded-2xl border-2 shadow-lg">
           <p>There are no answers</p>
         </div>
       )}

@@ -2,10 +2,17 @@ import { BarChart3, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useAllSurveys } from "../hooks/";
-import { SurveyCard, DeleteSurveyDialog, Loading } from "../components";
+import {
+  SurveyCard,
+  DeleteSurveyDialog,
+  Loading,
+  ShareSurveyDialog,
+} from "../components";
+import { useState } from "react";
 
 export function UserDashboardPage() {
   const { t } = useTranslation("userDashboardPage");
+  const [shareSurveyId, setShareSurveyId] = useState(-1);
   const {
     surveys,
     loading,
@@ -16,6 +23,15 @@ export function UserDashboardPage() {
   } = useAllSurveys();
 
   if (loading) return <Loading />;
+
+  if (shareSurveyId > 0) {
+    return (
+      <ShareSurveyDialog
+        shareSurveyId={shareSurveyId}
+        setShareSurveyId={setShareSurveyId}
+      />
+    );
+  }
 
   if (surveyToDelete > 0) {
     return (
@@ -63,6 +79,7 @@ export function UserDashboardPage() {
             {surveys.map((s) => (
               <SurveyCard
                 survey={s}
+                setShareSurveyId={setShareSurveyId}
                 setSurveyToDelete={setSurveyToDelete}
                 deactivate={deactivate}
               />
