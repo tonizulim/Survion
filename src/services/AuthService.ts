@@ -3,7 +3,7 @@ import { apiClient } from "./apiClient";
 
 export const login = async ({ credentials }: LoginProps) => {
   try {
-    const response = await apiClient.post("/user/login", credentials);
+    const response = await apiClient.post("/auth/login", credentials);
 
     return response;
   } catch (error: any) {
@@ -13,7 +13,7 @@ export const login = async ({ credentials }: LoginProps) => {
 
 export const register = async ({ credentials }: RegisterProps) => {
   try {
-    const response = await apiClient.post("/user/register", credentials);
+    const response = await apiClient.post("/auth/register", credentials);
 
     return response;
   } catch (error: any) {

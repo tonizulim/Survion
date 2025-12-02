@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./i18n/i18n.js";
-import { UserProvider } from "./contexts";
+import { AuthProvider } from "./contexts";
 import { LoginRegisterBlocker, NavBar } from "./components";
 import {
   HomePage,
@@ -18,7 +18,7 @@ import {
 function App() {
   return (
     <BrowserRouter>
-      <UserProvider>
+      <AuthProvider>
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -44,7 +44,7 @@ function App() {
           <Route path="/survey/take/:id" element={<TakeSurveyPage />} />
           <Route path="/survey/results/:id" element={<ResultPage />} />
         </Routes>
-      </UserProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

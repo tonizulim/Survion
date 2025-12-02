@@ -2,20 +2,20 @@ import { BarChart3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageDropdown, MobileDropdown } from ".";
-import { useUserContext } from "../contexts";
 import { NavButton } from ".";
+import { useAuthContext } from "../contexts";
 
 export function NavBar() {
   const { pathname } = useLocation();
   const { t } = useTranslation("common");
-  const { user } = useUserContext();
+  const { user } = useAuthContext();
 
   const baseLinks = [
     { href: "/login", label: t("buttons.logIn") },
     { href: "/register", label: t("navbar.getStarted") },
   ];
 
-  const LoginUserLinks = [{ href: "/user", label: t("navbar.dashboard") }];
+  const LoginUserLinks = [{ href: "/dashboard", label: t("navbar.dashboard") }];
 
   const navLinks = user ? [...LoginUserLinks] : [...baseLinks];
 

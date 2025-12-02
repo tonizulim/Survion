@@ -2,41 +2,39 @@ import { login, register } from "../services";
 import type { HandleRegisterProps, HandleLoginProps } from "../types";
 
 export const handleLogin = async ({
-  e,
   credentials,
-  setLoading,
+  setLoadingUser,
   navigate,
-  setError,
-  setLoginUser,
+  setUser,
 }: HandleLoginProps) => {
-  e.preventDefault();
-
-  setLoading(true);
+  setLoadingUser(true);
 
   try {
     const res = await login({ credentials });
 
     if (res.status === 200) {
-      const user = res.data;
+      //const user = res.data;
 
-      setLoginUser({
+      setUser({
         email: credentials.email,
-        isApproved: user.isApproved,
-        isEmailVerified: user.isEmailVerified,
-        isAdmin: user.isAdmin,
+        // isApproved: user.isApproved,
+        // isEmailVerified: user.isEmailVerified,
+        // isAdmin: user.isAdmin,
+        isApproved: true,
+        isEmailVerified: true,
+        isAdmin: false,
       });
 
-      if (user.isApproved && user.isEmailVerified) {
-        navigate("/dashboard");
-      }
+      // if (user.isApproved && user.isEmailVerified) {
+      //   navigate("/dashboard");
+      // }
     } else {
-      setError(res.data.detail);
     }
   } catch (err) {
     console.error(err);
   }
 
-  setLoading(false);
+  setLoadingUser(false);
 };
 
 export const handleRegister = async ({

@@ -3,12 +3,10 @@ import type { Credentials, RegisterCredentials, User } from "..";
 import type { NavigateFunction } from "react-router-dom";
 
 export interface HandleLoginProps {
-  e: FormEvent<HTMLFormElement>;
   credentials: Credentials;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  setError: Dispatch<SetStateAction<string>>;
+  setLoadingUser: Dispatch<SetStateAction<boolean>>;
   navigate: NavigateFunction;
-  setLoginUser: (userData: User) => void;
+  setUser: (userData: User) => void;
 }
 
 export interface HandleRegisterProps {

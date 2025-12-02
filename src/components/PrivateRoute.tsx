@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { useUserContext } from "../contexts";
+import { useAuthContext } from "../contexts";
 
 export const PrivateRoute = ({ children }: { children: ReactNode }) => {
-  const { user } = useUserContext();
+  const { user } = useAuthContext();
 
   return user?.isApproved && user.isEmailVerified ? (
     children

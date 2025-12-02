@@ -1,3 +1,3 @@
 export * from "./answerUtils";
 export * from "./surveyUtils";
-export * from "./userUtils";
+export * from "./AuthUtils";

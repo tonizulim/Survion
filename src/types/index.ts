@@ -2,7 +2,7 @@ export * from "./ErrorObject";
 export * from "./Feature";
 export * from "./QuestionEditorProps";
 export * from "./SurveyCardProps";
-export * from "./UserContextType";
+export * from "./contextProps";
 export * from "./credentials";
 export * from "./dialogProps";
 export * from "./dropdownsProps";

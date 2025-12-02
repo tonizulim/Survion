@@ -1,26 +1,23 @@
 import { BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import type { Credentials } from "../types";
-import { handleLogin } from "../utils";
 import { SuccessRegistrationDialog, Loading } from "../components";
-import { useUserContext } from "../contexts";
+import { useAuthContext } from "../contexts";
 
 export function LogInPage() {
   const { t } = useTranslation("logInPage");
   const { t: tCommon } = useTranslation("common");
 
-  const navigate = useNavigate();
   const [credentials, setCredentials] = useState<Credentials>({
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const { user, setLoginUser } = useUserContext();
 
-  if (loading) {
+  const { user, loadingUser, loginUser } = useAuthContext();
+
+  if (loadingUser) {
     return <Loading />;
   }
 
@@ -42,23 +39,12 @@ export function LogInPage() {
           <p className="text-muted-foreground">{t("description")}</p>
         </header>
         <div>
-          {error && (
-            <p className="mt-1 text-destructive  whitespace-pre-line">
-              {error}
-            </p>
-          )}
           <form
             className="space-y-4"
-            onSubmit={(e) =>
-              handleLogin({
-                e,
-                credentials,
-                setLoading,
-                navigate,
-                setError,
-                setLoginUser,
-              })
-            }
+            onSubmit={(e) => {
+              e.preventDefault();
+              loginUser({ credentials });
+            }}
           >
             <div className="space-y-2 flex flex-col mt-3">
               <label htmlFor="email" className="font-semibold">
@@ -99,7 +85,7 @@ export function LogInPage() {
             <button
               type="submit"
               className="w-full bg-primary text-secondary rounded-md p-2 cursor-pointer"
-              disabled={loading}
+              disabled={loadingUser}
             >
               {tCommon("buttons.logIn")}
             </button>
