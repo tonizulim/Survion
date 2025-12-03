@@ -33,6 +33,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     refresh();
   }, []);
 
+  useEffect(() => {
+    if (successRegistration) {
+      setTimeout(() => {
+        setUser(null);
+        setSuccessRegistration(false);
+        navigate("/");
+      }, 3000);
+    }
+  }, [successRegistration]);
+
   const loginUser = ({ credentials }: LoginUserProps) => {
     handleLogin({
       credentials,

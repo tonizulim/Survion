@@ -190,7 +190,7 @@ export function useNewSurvey() {
 
   const submitSurvey = ({ e, setLoading }: SubmitSurveyProps) => {
     e.preventDefault();
-    console.log(survey);
+
     handleSubmitSurvey({
       survey,
       setSurvey,

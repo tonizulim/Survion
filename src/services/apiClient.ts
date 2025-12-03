@@ -60,6 +60,7 @@ export class ApiClient {
           }
           return this.axiosInstance(originalRequest); // RETRY
         }
+        return Promise.reject(error);
       }
     );
   }

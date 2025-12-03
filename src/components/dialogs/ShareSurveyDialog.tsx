@@ -8,7 +8,7 @@ export function ShareSurveyDialog({
   shareSurveyId,
   setShareSurveyId,
 }: ShareSurveyDialogProps) {
-  const { t } = useTranslation("deleteSurveyDialog");
+  const { t } = useTranslation("shareSurveyDialog");
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const qrCodeValue = `${baseUrl}/survey/take/${shareSurveyId}`;
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -38,16 +38,14 @@ export function ShareSurveyDialog({
           onClick={() => setShareSurveyId(-1)}
         />
         <div>
-          <h1 className="text-3xl font-semibold">Share Survey</h1>
-          <p className="text-muted-foreground my-3">
-            Share this survey with others via link or QR code
-          </p>
+          <h1 className="text-3xl font-semibold">{t("title")}</h1>
+          <p className="text-muted-foreground my-3">{t("description")}</p>
         </div>
-        <h1 className="text-xl font-semibold">Scan me</h1>
+        <h1 className="text-xl font-semibold">{t("scanMe")}</h1>
 
         <QRCodeCanvas className="m-3 mx-auto" value={qrCodeValue} size={250} />
 
-        <h1 className="text-xl font-semibold">Copy link</h1>
+        <h1 className="text-xl font-semibold">{t("copyLink")}</h1>
         <div className="flex flex-row items-center gap-4">
           <input
             className="w-full border-2 rounded-md border-accent p-2"

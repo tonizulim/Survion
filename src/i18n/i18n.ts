@@ -38,6 +38,7 @@ i18n
       "surveyCard",
       "deleteSurveyDialog",
       "questionResult",
+      "shareSurveyDialog",
     ],
     defaultNS: "common",
     interpolation: {
