@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { useSurveyResults } from "../hooks";
 import { QuestionResult, SurveyNotFound, Loading } from "../components/";
+import { ArrowLeft } from "lucide-react";
 
 export function ResultPage() {
   const { t } = useTranslation("userDashboardPage");
@@ -14,11 +15,14 @@ export function ResultPage() {
 
   return (
     <div className=" flex flex-col items-center justify-center mt-20 mb-5 p-6">
-      <Link
-        to="/dashboard"
-        className="absolute top-15 md:top-20 left-0 p-3 m-3 text-sm md:text-lg font-semibold rounded-2xl flex items-center border-2 border-muted-foreground shadow-2xl"
-      >
-        go back
+      <Link to="/dashboard" className="absolute left-5 top-20">
+        <button
+          type="button"
+          className="flex flex-row items-center border-2 text-md rounded-xl p-2 cursor-pointer bg-primary-foreground"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          {t("back")}
+        </button>
       </Link>
       <div className="p-6 w-full md:w-3xl rounded-2xl border-2 shadow-lg">
         <header className="space-y-1 text-center">

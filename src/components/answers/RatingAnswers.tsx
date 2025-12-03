@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import type { RatingAnswersProps } from "../../types";
 
 export function RatingAnswers({ question }: RatingAnswersProps) {
+  const { t } = useTranslation("questionResult");
   const width =
     ((Number(question.rating) - Number(question.minRating)) /
       (Number(question.maxRating) - Number(question.minRating))) *
@@ -10,12 +12,15 @@ export function RatingAnswers({ question }: RatingAnswersProps) {
     <>
       {question.responses == 0 && (
         <div className="m-4 p-6 rounded-2xl border-2 shadow-lg">
-          <p>There are no answers</p>
+          <p>{t("noAnswers")}</p>
         </div>
       )}
       <div className="mx-4 flex flex-row justify-between">
         <p>{question.minRating}</p>
-        <p>average rating:{question.rating}</p>
+        <p>
+          {t("averageRating")}
+          {question.rating}
+        </p>
         <p>{question.maxRating}</p>
       </div>
       <div className="m-4 rounded-2xl border-2 shadow-lg flex flex-row justify-between bg-muted overflow-hidden">

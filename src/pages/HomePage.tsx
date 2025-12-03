@@ -11,15 +11,6 @@ export function HomePage() {
   const features = t("features", { returnObjects: true }) as Feature[];
   const icons = [CheckCircle2, BarChart3, Shield, Clock];
 
-  const fetchData = async () => {
-    try {
-      const response = await apiClient.get("/auth/authorize");
-      console.log(response.data);
-    } catch (error) {
-      console.error("Failed to authorize:", error);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-linear-to-b from-background to-muted/20">
       <section className="container mx-auto px-4 py-20 mt-30 text-center">
@@ -29,7 +20,6 @@ export function HomePage() {
         <p className="text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
           {t("description")}
         </p>
-        <button onClick={() => fetchData()}>testme</button>
       </section>
 
       <section className="container mx-auto px-4">

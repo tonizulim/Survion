@@ -37,6 +37,7 @@ i18n
       "userDashboardPage",
       "surveyCard",
       "deleteSurveyDialog",
+      "questionResult",
     ],
     defaultNS: "common",
     interpolation: {

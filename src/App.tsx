@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./i18n/i18n.js";
 import { AuthProvider } from "./contexts";
-import { LoginRegisterBlocker, NavBar } from "./components";
+import { LoginRegisterBlocker, NavBar, PrivateRoute } from "./components";
 import {
   HomePage,
   NoPage,
@@ -39,10 +39,39 @@ function App() {
               </LoginRegisterBlocker>
             }
           />
-          <Route path="/dashboard" element={<UserDashboardPage />} />
-          <Route path="/survey/new" element={<NewSurveyPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <UserDashboardPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <PrivateRoute requiredRole="admin">
+                <UserDashboardPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/survey/new"
+            element={
+              <PrivateRoute>
+                <NewSurveyPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="/survey/take/:id" element={<TakeSurveyPage />} />
-          <Route path="/survey/results/:id" element={<ResultPage />} />
+          <Route
+            path="/survey/results/:id"
+            element={
+              <PrivateRoute>
+                <ResultPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

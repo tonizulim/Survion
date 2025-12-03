@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
 import type { TextQuestionAnswersProps } from "../../types";
 
 export function TextQuestionAnswers({ answers }: TextQuestionAnswersProps) {
+  const { t } = useTranslation("questionResult");
+
   if (!answers || answers.length === 0) {
     return (
       <div className="m-4 p-6  rounded-2xl border-2 shadow-lg">
-        <p>There are no answers</p>
+        <p>{t("noAnswers")}</p>
       </div>
     );
   }

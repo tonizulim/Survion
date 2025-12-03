@@ -9,7 +9,7 @@ import {
 } from ".";
 
 export function QuestionResult({ question, index }: QuestionResultProps) {
-  const { t } = useTranslation("questionEditorComponent");
+  const { t } = useTranslation("common");
 
   return (
     <div className="m-4 p-6 w-full md:w-3xl rounded-2xl border-2 shadow-lg">

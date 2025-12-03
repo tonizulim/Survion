@@ -39,7 +39,7 @@ export function NewSurveyPage() {
         <Link to="/dashboard">
           <button
             type="button"
-            className="flex flex-row items-center border-2 text-md rounded-xl p-2"
+            className="flex flex-row items-center border-2 text-md rounded-xl p-2 cursor-pointer"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t("back")}
@@ -190,29 +190,39 @@ export function NewSurveyPage() {
               )}
             </div>
 
-            <div className="flex items-center gap-4 pt-4 mt-3">
-              {loading ? (
-                <button
-                  disabled
-                  type="button"
-                  className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-wait"
-                >
-                  {t("submitting")}
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
-                >
-                  {t("create")}
-                </button>
-              )}
+            <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-4 mt-3 gap-3">
+              <div className="flex items-center gap-4">
+                {loading ? (
+                  <button
+                    disabled
+                    type="button"
+                    className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-wait"
+                  >
+                    {t("submitting")}
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="text-md px-8 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                  >
+                    {t("create")}
+                  </button>
+                )}
 
+                <button
+                  type="button"
+                  className="text-md px-8 bg-secondary text-secondary-foreground hover:bg-destructive rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                >
+                  {t("cancel")}
+                </button>
+              </div>
               <button
                 type="button"
-                className="text-md px-8 bg-secondary text-secondary-foreground hover:bg-destructive rounded-lg p-2 font-semibold flex items-center cursor-pointer"
+                onClick={addQuestion}
+                className="text-md px-4 bg-primary text-primary-foreground rounded-lg p-2 font-semibold flex items-center cursor-pointer"
               >
-                {t("cancel")}
+                <Plus className="h-4 w-4 mr-2" />
+                {t("addQuestion")}
               </button>
             </div>
           </form>

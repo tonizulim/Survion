@@ -1,14 +1,17 @@
+import { useTranslation } from "react-i18next";
 import type { CheckboxQuestionAnswersProps } from "../../types";
 
 export function CheckboxQuestionAnswers({
   questionOptions,
   count,
 }: CheckboxQuestionAnswersProps) {
+  const { t } = useTranslation("questionResult");
+
   return (
     <>
       {count == 0 && (
         <div className="m-4 p-6  rounded-2xl border-2 shadow-lg">
-          <p>There are no answers</p>
+          <p>{t("noAnswers")}</p>
         </div>
       )}
       {questionOptions.map((a, index) => (

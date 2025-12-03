@@ -49,24 +49,17 @@ export class ApiClient {
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true; // mark request as retried
 
-          await this.axiosInstance.get<{}>("/auth/refresh", {
-            withCredentials: true,
-          });
-        }
-
-        try {
-          // Call refresh endpoint
-          await this.axiosInstance.get<{ accessToken: string }>(
-            "/auth/refresh",
-            { withCredentials: true }
-          );
-
+          try {
+            // Call refresh endpoint
+            await this.axiosInstance.get<{ accessToken: string }>(
+              "/auth/refresh",
+              { withCredentials: true }
+            );
+          } catch (refreshError) {
+            return Promise.reject(refreshError);
+          }
           return this.axiosInstance(originalRequest); // RETRY
-        } catch (refreshError) {
-          return Promise.reject(refreshError);
         }
-
-        return Promise.reject(error);
       }
     );
   }
