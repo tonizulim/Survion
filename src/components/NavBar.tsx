@@ -2,22 +2,31 @@ import { BarChart3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageDropdown, MobileDropdown } from ".";
-import { NavButton } from ".";
 import { useAuthContext } from "../contexts";
+import { twMerge } from "tailwind-merge";
 
 export function NavBar() {
   const { pathname } = useLocation();
   const { t } = useTranslation("common");
-  const { user } = useAuthContext();
+  const { user, logoutUser } = useAuthContext();
 
   const baseLinks = [
-    { href: "/login", label: t("buttons.logIn") },
-    { href: "/register", label: t("navbar.getStarted") },
+    { href: "/login", label: t("buttons.logIn"), onClick: () => {} },
+    { href: "/register", label: t("navbar.getStarted"), onClick: () => {} },
   ];
 
-  const LoginUserLinks = [{ href: "/dashboard", label: t("navbar.dashboard") }];
+  const LoginUserLinks = [
+    { href: "/dashboard", label: t("navbar.dashboard"), onClick: () => {} },
+    {
+      label: t("navbar.logout"),
+      onClick: () => logoutUser(),
+    },
+  ];
 
-  const navLinks = user ? [...LoginUserLinks] : [...baseLinks];
+  const navLinks =
+    user?.isApproved && user.isEmailVerified
+      ? [...LoginUserLinks]
+      : [...baseLinks];
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 fixed w-full top-0 z-500">
@@ -37,14 +46,35 @@ export function NavBar() {
           )}
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
-            {navLinks.map(({ href, label }) => (
-              <NavButton
-                key={href}
-                href={href}
-                label={label}
-                selected={pathname === href}
-              />
-            ))}
+            {navLinks.map(({ href, label, onClick }, index) => {
+              if (href != null) {
+                return (
+                  <Link to={href} key={href}>
+                    <button
+                      className={twMerge(
+                        "gap-2 text-lg px-3 p-2 size hover:bg-accent rounded-md font-semibold cursor-pointer",
+                        pathname === href && "bg-accent text-accent-foreground"
+                      )}
+                      key={href}
+                    >
+                      {label}
+                    </button>
+                  </Link>
+                );
+              } else {
+                return (
+                  <button
+                    key={index}
+                    className={
+                      "gap-2 text-lg px-3 p-2 size hover:bg-accent rounded-md font-semibold cursor-pointer"
+                    }
+                    onClick={onClick}
+                  >
+                    {label}
+                  </button>
+                );
+              }
+            })}
           </div>
 
           <LanguageDropdown />

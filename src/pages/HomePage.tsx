@@ -2,12 +2,23 @@ import { BarChart3, CheckCircle2, Clock, Shield } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import type { Feature } from "../types";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { apiClient } from "../services";
 
 export function HomePage() {
   const { t } = useTranslation("home");
 
   const features = t("features", { returnObjects: true }) as Feature[];
   const icons = [CheckCircle2, BarChart3, Shield, Clock];
+
+  const fetchData = async () => {
+    try {
+      const response = await apiClient.get("/auth/authorize");
+      console.log(response.data);
+    } catch (error) {
+      console.error("Failed to authorize:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-b from-background to-muted/20">
@@ -18,6 +29,7 @@ export function HomePage() {
         <p className="text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
           {t("description")}
         </p>
+        <button onClick={() => fetchData()}>testme</button>
       </section>
 
       <section className="container mx-auto px-4">

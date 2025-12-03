@@ -34,20 +34,34 @@ export function MobileDropdown({ navLinks }: MobileDropdownProps) {
 
       {open && (
         <div className="absolute top-full flex flex-col p-1 gap-1 right-0 md:w-full rounded-md bg-background border-t shadow-lg z-50 animate-in fade-in slide-in-from-top">
-          {navLinks.map(({ href, label }) => {
-            return (
-              <Link to={href}>
+          {navLinks.map(({ href, label, onClick }) => {
+            if (href != null) {
+              return (
+                <Link to={href}>
+                  <button
+                    className={twMerge(
+                      "gap-2 text-lg px-3 p-2 size hover:bg-accent rounded-md font-semibold cursor-pointer",
+                      pathname === href && "bg-accent text-accent-foreground"
+                    )}
+                    key={href}
+                  >
+                    {label}
+                  </button>
+                </Link>
+              );
+            } else {
+              return (
                 <button
-                  className={twMerge(
-                    "p-1 border-2 border-foreground rounded-md cursor-pointer hover:bg-accent w-40",
-                    pathname === href && "bg-accent text-accent-foreground"
-                  )}
+                  className={
+                    "p-1 flex border-foreground rounded-md cursor-pointer hover:bg-accent w-40 bg-background gap-2"
+                  }
                   key={href}
+                  onClick={onClick}
                 >
                   {label}
                 </button>
-              </Link>
-            );
+              );
+            }
           })}
         </div>
       )}

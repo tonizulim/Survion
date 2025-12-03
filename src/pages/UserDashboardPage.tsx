@@ -78,6 +78,7 @@ export function UserDashboardPage() {
           <div className="space-y-4 grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
             {surveys.map((s) => (
               <SurveyCard
+                key={s.id}
                 survey={s}
                 setShareSurveyId={setShareSurveyId}
                 setSurveyToDelete={setSurveyToDelete}

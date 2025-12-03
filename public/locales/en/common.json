@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About",
     "getStarted": "Get Started",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "logout":"Logout"
   },
   "buttons": {
     "save": "Save",

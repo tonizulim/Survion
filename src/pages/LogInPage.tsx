@@ -15,16 +15,15 @@ export function LogInPage() {
     password: "",
   });
 
-  const { user, loadingUser, loginUser } = useAuthContext();
+  const { user, loadingUser, error, loginUser, successRegistration } =
+    useAuthContext();
 
   if (loadingUser) {
     return <Loading />;
   }
 
-  if (user != null) {
-    return (
-      <SuccessRegistrationDialog user={{ ...user, email: credentials.email }} />
-    );
+  if (user != null && successRegistration) {
+    return <SuccessRegistrationDialog user={user} />;
   }
 
   return (
@@ -39,6 +38,9 @@ export function LogInPage() {
           <p className="text-muted-foreground">{t("description")}</p>
         </header>
         <div>
+          {error && (
+            <p className="mt-1 text-destructive whitespace-pre-line">{error}</p>
+          )}
           <form
             className="space-y-4"
             onSubmit={(e) => {

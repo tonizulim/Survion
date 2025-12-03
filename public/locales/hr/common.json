@@ -3,7 +3,8 @@
     "home": "Početna",
     "about": "O nama",
     "getStarted": "Registriraj se",
-    "dashboard": "Korisnička stranica"
+    "dashboard": "Korisnička stranica",
+    "logout": "Odjava"
   },
   "buttons": {
     "save": "Spremi",

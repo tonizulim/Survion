@@ -41,31 +41,34 @@ export class ApiClient {
       }
     );
 
-    // Response interceptor
     this.axiosInstance.interceptors.response.use(
       (response) => response,
-      (error) => {
-        if (error.response?.status === 401) {
-          this.setAuthToken(null);
+      async (error) => {
+        const originalRequest = error.config;
+
+        if (error.response?.status === 401 && !originalRequest._retry) {
+          originalRequest._retry = true; // mark request as retried
+
+          await this.axiosInstance.get<{}>("/auth/refresh", {
+            withCredentials: true,
+          });
         }
+
+        try {
+          // Call refresh endpoint
+          await this.axiosInstance.get<{ accessToken: string }>(
+            "/auth/refresh",
+            { withCredentials: true }
+          );
+
+          return this.axiosInstance(originalRequest); // RETRY
+        } catch (refreshError) {
+          return Promise.reject(refreshError);
+        }
+
         return Promise.reject(error);
       }
     );
-  }
-
-  public setAuthToken(token: string | null): void {
-    this.authToken = token;
-    if (token) {
-      this.axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${token}`;
-    } else {
-      delete this.axiosInstance.defaults.headers.common["Authorization"];
-    }
-  }
-
-  public getAuthToken(): string | null {
-    return this.authToken;
   }
 
   // HTTP Methods
@@ -73,7 +76,10 @@ export class ApiClient {
     url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.get<T>(url, config);
+    return this.axiosInstance.get<T>(url, {
+      ...config,
+      withCredentials: true,
+    });
   }
 
   public async post<T>(
@@ -81,7 +87,10 @@ export class ApiClient {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.post<T>(url, data, config);
+    return this.axiosInstance.post<T>(url, data, {
+      ...config,
+      withCredentials: true,
+    });
   }
 
   public async put<T>(
@@ -89,14 +98,20 @@ export class ApiClient {
     data?: any,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.put<T>(url, data, config);
+    return this.axiosInstance.put<T>(url, data, {
+      ...config,
+      withCredentials: true,
+    });
   }
 
   public async delete<T>(
     url: string,
     config?: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return this.axiosInstance.delete<T>(url, config);
+    return this.axiosInstance.delete<T>(url, {
+      ...config,
+      withCredentials: true,
+    });
   }
 }
 

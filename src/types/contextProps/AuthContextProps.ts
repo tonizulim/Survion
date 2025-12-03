@@ -1,11 +1,20 @@
-import type { Credentials, User } from "..";
+import type { Credentials, RegisterCredentials, User } from "..";
 
 export interface AuthContextType {
   user: User | null;
   loadingUser: boolean;
-  loginUser: ({}: loginUserProps) => void;
+  error: string;
+  successRegistration: boolean;
+  loginUser: ({}: LoginUserProps) => void;
+  logoutUser: () => void;
+  refresh: () => void;
+  registerUser: ({}: RegisterUserProps) => void;
 }
 
-export interface loginUserProps {
+export interface LoginUserProps {
   credentials: Credentials;
+}
+
+export interface RegisterUserProps {
+  credentials: RegisterCredentials;
 }

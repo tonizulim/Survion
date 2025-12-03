@@ -1,11 +1,18 @@
-import { login, register } from "../services";
-import type { HandleRegisterProps, HandleLoginProps } from "../types";
+import { login, logout, refresh, register } from "../services";
+import type {
+  HandleRegisterProps,
+  HandleLoginProps,
+  HandleLogoutProps,
+  HandleRefreshProps,
+} from "../types";
 
 export const handleLogin = async ({
   credentials,
   setLoadingUser,
-  navigate,
   setUser,
+  setError,
+  navigate,
+  setSuccessRegistration,
 }: HandleLoginProps) => {
   setLoadingUser(true);
 
@@ -13,21 +20,57 @@ export const handleLogin = async ({
     const res = await login({ credentials });
 
     if (res.status === 200) {
-      //const user = res.data;
+      const user = res.data;
 
-      setUser({
-        email: credentials.email,
-        // isApproved: user.isApproved,
-        // isEmailVerified: user.isEmailVerified,
-        // isAdmin: user.isAdmin,
-        isApproved: true,
-        isEmailVerified: true,
-        isAdmin: false,
-      });
+      setUser(user);
 
-      // if (user.isApproved && user.isEmailVerified) {
-      //   navigate("/dashboard");
-      // }
+      if (user.isApproved && user.isEmailVerified) {
+        navigate("/dashboard");
+      } else {
+        setSuccessRegistration(true);
+      }
+    } else {
+      setError(res.data.detail);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  setLoadingUser(false);
+};
+
+export const handleLogout = async ({
+  setLoadingUser,
+  navigate,
+  setUser,
+}: HandleLogoutProps) => {
+  setLoadingUser(true);
+
+  try {
+    const res = await logout();
+
+    if (res.status === 200) {
+      setUser(null);
+      navigate("/");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  setLoadingUser(false);
+};
+
+export const handleRefresh = async ({
+  setLoadingUser,
+  setUser,
+}: HandleRefreshProps) => {
+  setLoadingUser(true);
+
+  try {
+    const res = await refresh();
+
+    if (res.status === 200) {
+      setUser(res.data);
     } else {
     }
   } catch (err) {
@@ -38,15 +81,12 @@ export const handleLogin = async ({
 };
 
 export const handleRegister = async ({
-  e,
   credentials,
-  setLoading,
-  setError,
+  setLoadingUser,
   setSuccessRegistration,
+  setError,
 }: HandleRegisterProps) => {
-  e.preventDefault();
-
-  setLoading(true);
+  setLoadingUser(true);
 
   try {
     const res = await register({ credentials });
@@ -60,5 +100,5 @@ export const handleRegister = async ({
     console.error(err);
   }
 
-  setLoading(false);
+  setLoadingUser(false);
 };

@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import type { RegisterCredentials } from "../types";
-import { handleRegister } from "../utils";
 import { Loading, SuccessRegistrationDialog } from "../components";
+import { useAuthContext } from "../contexts";
 
 export function RegisterPage() {
   const { t } = useTranslation("registerPage");
@@ -15,11 +15,11 @@ export function RegisterPage() {
     password: "",
     repeatPassword: "",
   });
-  const [loading, setLoading] = useState(false);
-  const [successRegistration, setSuccessRegistration] = useState(false);
-  const [error, setError] = useState("");
 
-  if (loading) {
+  const { loadingUser, error, registerUser, successRegistration } =
+    useAuthContext();
+
+  if (loadingUser) {
     return <Loading />;
   }
 
@@ -53,15 +53,10 @@ export function RegisterPage() {
           )}
           <form
             className="space-y-4"
-            onSubmit={(e) =>
-              handleRegister({
-                e,
-                credentials,
-                setLoading,
-                setError,
-                setSuccessRegistration,
-              })
-            }
+            onSubmit={(e) => {
+              e.preventDefault();
+              registerUser({ credentials });
+            }}
           >
             <div className="space-y-2 flex flex-col mt-3">
               <label htmlFor="email" className="font-semibold">
@@ -100,12 +95,12 @@ export function RegisterPage() {
               />
             </div>
             <div className="space-y-2 flex flex-col mt-3">
-              <label htmlFor="password" className="font-semibold">
+              <label htmlFor="repeatPassword" className="font-semibold">
                 {t("confirmPassword")}
               </label>
               <input
                 className="border-2 rounded-md border-accent p-2"
-                id="password"
+                id="repeatPassword"
                 type="password"
                 placeholder={t("confirmPasswordPlaceholder")}
                 value={credentials.repeatPassword}
@@ -120,7 +115,7 @@ export function RegisterPage() {
             <button
               type="submit"
               className="w-full bg-primary text-secondary rounded-md p-2"
-              disabled={loading}
+              disabled={loadingUser}
             >
               {tCommon("buttons.singUp")}
             </button>
